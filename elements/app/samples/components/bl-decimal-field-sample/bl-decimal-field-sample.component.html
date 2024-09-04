@@ -1,0 +1,99 @@
+<form [formGroup]="formGroup">
+  <p>{{'sample.decimal.percent'|translate}}</p>
+
+  <bl-decimal-field #sample
+                         [allowNegative]="true"
+                         [formControl]="formGroup.controls.rate"
+                         [id]="'idDecimalPercentage'"
+                         [label]="'sample.decimal.rate'"
+                         [minDecimalDigits]="2"
+                         [maxDecimalDigits]="5"
+                         [isZeroAllowedAtTheBeginning]="true"
+                         [isPercent]="true"
+                         [testLabelValue]="'input1'"
+  >
+  </bl-decimal-field>
+  <ul>
+   <span [innerHTML]="'sample.decimal.percent-config'|translate"></span>
+  </ul>
+
+  <p>{{'sample.decimal.amount'|translate}}</p>
+  <div style="display : inline-flex;">
+    <select #teams (change)="onSelected(teams.value)" [formControl]="formGroup.controls.currency" [attr.testlabel]="'input3' + '_select'"
+            style="border: 10px solid transparent;position: relative;background-color: #f5f5fb;width: 100%; height: 60px;">
+      <option *ngFor="let currency of currencyList; let index = index" [selected]="currency" [value]="currency" [attr.testlabel]="currency + '_option_' + index">
+        {{ currency }}
+      </option>
+    </select>&nbsp;&nbsp;
+    <!-- nombre formater au millier (separatorOfThousands)
+         et ajout de 2 zero (nbDecimal) après la virgule-->
+    <!-- bug si on veux utiliser les deux config séparés  -->
+    <bl-decimal-field #sample
+                           [formControl]="formGroup.controls.amountEuro"
+                           [id]="'idAmountEuroRight'"
+                           [label]="'sample.decimal.price'"
+                           [placeholder]="'sample.decimal.price.placeholder'"
+                           [minDecimalDigits]="2"
+                           [rightAlign]="false"
+                           [suffixIcon]="iconClassName"
+                           [suffixLabel]="suffixLabel"
+                           [testLabelValue]="'input2'"
+    ></bl-decimal-field>
+    <div style="padding-top: 14.5px;background-color: #f5f5fb;height: 60px;">
+    </div>
+  </div>
+  <!-- nombre entier accépté ?(nombre décimale  avec (nbDecimal) après la virgule si nn erreur )-->
+  <p>{{'sample.decimal.leftPrefix'|translate}}</p>
+<bl-decimal-field #sample
+                         [formControl]="formGroup.controls.price"
+                         [id]="'idAmountEuroLeft'"
+                         [label]="'sample.decimal.price'"
+                         [minDecimalDigits]="2"
+                         [rightAlign]="false"
+                         [placeholder]="'sample.decimal.price.placeholder'"
+                         [prefixIcon]="iconClassName"
+                         [prefixLabel]="prefixLabel"
+                         [testLabelValue]="'input3'"
+  >
+  </bl-decimal-field>
+  <p>{{'sample.decimal.allowNegative'|translate}} :</p>
+  <bl-decimal-field #sample
+                         [formControl]="formGroup.controls.negativeValue"
+                         [id]="'idDecimalNegative'"
+                         [label]="'sample.decimal.allowNegative'"
+                         [placeholder]="'sample.decimal.negativeValue.placeholder'"
+                         [allowNegative]="true"
+                         [separatorOfThousands]="false"
+                         [rightAlign]="false"
+                         [appearance]="'fill'"
+                         [testLabelValue]="'input5'"
+  >
+  </bl-decimal-field>
+  <p>{{'sample.decimal.fiveDigit'|translate}}</p>
+  <bl-decimal-field #sample
+                         (writeValueEvent)="onWriteValue($event)"
+                         [formControl]="formGroup.controls.withAddedZeros"
+                         [id]="'idDecimalWithAddedZeros'"
+                         [label]="'sample.decimal.number'"
+                         [placeholder]="'sample.decimal.addZeros.placeholder'"
+                         [allowNegative]="true"
+                         [minDecimalDigits]="5"
+                         [rightAlign]="false"
+                         [appearance]="'fill'"
+                         [testLabelValue]="'input5'"
+  >
+  </bl-decimal-field>
+  <p>{{'sample.decimal.read-only'|translate}}</p>
+   <bl-decimal-field #sample
+                        [allowNegative]="true"
+                        [formControl]="formGroup.controls.amountReadOnly"
+                        [id]="'idDecimalAmountReadOnly'"
+                        [label]="'sample.libelle.read-only'"
+                        [placeholder]="'sample.decimal.readOnly.placeholder'"
+                        [readOnly]="true"
+                        [appearance]="'fill'"
+                        [testLabelValue]="'input6'"
+
+ >
+ </bl-decimal-field>
+</form>

@@ -1,0 +1,25 @@
+
+<h3 class="bl-zt-h3">{{'pages.custom-error.subtitle' | translate}}</h3>
+
+  <p> Erreur : {{formGroup.controls.label1.errors | json}}</p>
+<div class="col-4">
+  <bl-text-field [customErrorsMap]="customErrorMap1" [formControl]="formGroup.controls.label1" [id]="'input-error'"
+                 [label]="'pages.custom-error.label1'" [placeholder]="'pages.custom-error.label1'" [required]="true"
+                 [testLabelValue]="'input-error-text-field'" [type]="'text'" >
+  </bl-text-field>
+</div>
+  <p> Erreur : {{formGroup.controls.label2.errors | json}}</p>
+  <div class="col-4">
+    <bl-text-area [customErrorsMap]="customErrorMap2" [formControl]="formGroup.controls.label2" [id]="'input-error'"
+                   [label]="'pages.custom-error.label2'" [placeholder]="'pages.custom-error.label2'" [required]="true"
+                   [testLabelValue]="'input-error-text-area'" [type]="'text'" >
+    </bl-text-area>
+  </div>
+
+<p> Erreur : {{formGroup.controls.label3.errors | json}}</p>
+<div class="col-4">
+  <bl-decimal-field [customErrorsMap]="customErrorMap3" [formControl]="formGroup.controls.label3" [id]="'input-error'"
+                [label]="'pages.custom-error.label3'" [placeholder]="'pages.custom-error.label3'" [required]="true"
+                [testLabelValue]="'input-error-text-decimal'" [rightAlign]="false" >
+  </bl-decimal-field>
+</div>

@@ -1,0 +1,21 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 40px;
+  grid-auto-rows: 70px;
+
+}
+ul.circle>li {
+  list-style-type: circle;
+}
+.icon-item{
+  display:flex;
+  justify-content: center;
+}
+.text-item{
+  text-align: center;
+  padding-top: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.29);
+  margin-bottom: -20px;
+  border-radius: 10px;
+}
