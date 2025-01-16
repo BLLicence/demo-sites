@@ -20,7 +20,7 @@ export class BlAbstractMultiComboSearchSampleComponent extends SampleAbstractCom
     @ViewChild(BlMultiComboSearchStatutComponent) mcStatutComponent: BlMultiComboSearchStatutComponent;
 
   listChange(event){
-    console.log("listChange :",event);
+  //  console.log("listChange :",event);
   }
     constructor(private staticBddService: StaticBddService) {
         super();

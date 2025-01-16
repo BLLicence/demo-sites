@@ -83,7 +83,7 @@ export class BlDatepickerSampleComponent extends SampleAbstractComponent<BlDateP
 
       // Check if the selected date is on format XX-XXX-XX
       if (selectedDate && selectedDate.length!=8) {
-        console.log("lengh :",selectedDate.length)
+     //   console.log("lengh :",selectedDate.length)
 
         return { invalidFormat: true };
       }

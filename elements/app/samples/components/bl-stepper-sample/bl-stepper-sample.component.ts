@@ -133,7 +133,7 @@ export class BlStepperSampleComponent implements OnInit {
 
   initForms() {
     this.formGroup1 = new FormGroup({
-      label1: new FormControl<string | null>({ value: 'Nancy', disabled: false }, Validators.required),
+      label1: new FormControl<string | null>({ value: '', disabled: false }, Validators.required),
       listBox1: new FormControl<BlBasicObject | null>(this.listData[3]),
       date1: new FormControl<moment.Moment>(moment(new Date())),
       date2: new FormControl<moment.Moment>(moment(new Date())),
@@ -170,6 +170,9 @@ export class BlStepperSampleComponent implements OnInit {
     this.ts.warning(this.translate.instant('viewer.form.terminate'));
 
   }
+  checkFormStepValidators(){
+    return this.formGroup1.invalid;
+  }
 
   onSubmitForm(event) {
     if (this.formGroup1.invalid) {
@@ -184,7 +187,10 @@ export class BlStepperSampleComponent implements OnInit {
 
     }
   }
+  handleStepInteraction(){
+    this.ts.success(this.translate.instant('sample.stepper.step_changed'));
 
+  }
   onNextStep1(event) {
 
   }

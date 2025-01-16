@@ -18,7 +18,9 @@ import {
   FormErrorModule,
   BlTableModule,
   BlFilterTablePanelModule,
-  BlRadioComponentModule, SelectSearchModule
+  BlRadioComponentModule,
+  SelectSearchModule,
+  BlActionBannerModule,
 } from '@esedit-md/shared-ui';
 import { TranslateModule } from '@ngx-translate/core';
 import { CodeTabModule } from '../../util/code-tab/code-tab.module';
@@ -43,10 +45,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BlErrorModule } from 'libs/shared-ui/src/lib/components/basic/bl-error/bl-error.module';
 import { BlTemplateTableSampleComponent } from './bl-template-table-sample/bl-template-table-sample.component';
-import {AppLayoutModule} from "@bl/bl-app-layout";
+import { AppLayoutModule } from '@bl/bl-app-layout';
 import { BlTableWithFilterUpTemplateSampleComponent } from '../components/tables-samples/bl-table-with-filter-up-template-sample/bl-table-with-filter-up-template-sample.component';
-import {BlStepperFormSampleComponent} from "./bl-stepper-form-sample/bl-stepper-form-sample.component";
+import { BlStepperFormSampleComponent } from './bl-stepper-form-sample/bl-stepper-form-sample.component';
 import { MatIconModule } from '@angular/material/icon';
+import { BlTableWithRightPanel75PercentSampleComponent } from './bl-table-with-right-panel-75-percent-sample/bl-table-with-right-panel-75-percent-sample.component';
 
 const TEMP_COMPONENTS = [
   BlPageTemplateSampleComponent,
@@ -58,7 +61,8 @@ const TEMP_COMPONENTS = [
   BlExpensionFormsSampleComponent,
   BlTemplateTableSampleComponent,
   BlStepperFormSampleComponent,
-  BlTableWithFilterUpTemplateSampleComponent
+  BlTableWithFilterUpTemplateSampleComponent,
+  BlTableWithRightPanel75PercentSampleComponent
 ];
 
 @NgModule({
@@ -109,7 +113,8 @@ const TEMP_COMPONENTS = [
     BlFilterTablePanelModule,
     BlRadioComponentModule,
     MatIconModule,
-    SelectSearchModule
+    SelectSearchModule,
+    BlActionBannerModule,
   ],
   exports: [TEMP_COMPONENTS],
 })

@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import {
   BlButtonModule, BlElementsDirectiveModule,
-  BlFilterTablePanelModule, BlListBoxModule, BlMultiComboModule,
+  BlFilterTablePanelModule, BlLabelModule, BlListBoxModule, BlMultiComboModule,
   BlTableModule, BlTextFieldModule,
-  BlTransverseMenuModule,
+  BlTransverseMenuModule, EditableTable2Module,
 } from "@esedit-md/shared-ui";
 import { TranslateModule } from "@ngx-translate/core";
 import { MatCardModule } from "@angular/material/card";
@@ -26,25 +26,27 @@ const SAMPLE_COMPONENTS = [
 
 @NgModule({
     declarations: [SAMPLE_COMPONENTS],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TranslateModule,
-        BlButtonModule,
-        BlTransverseMenuModule,
-        MatDialogModule,
-        BlElementsDirectiveModule,
-        MatCardModule,
-        AppLayoutModule,
-        BlTableModule,
-        BlTextFieldModule,
-        BlFilterTablePanelModule,
-        BlMultiComboModule,
-        BlListBoxModule,
-        BlErrorModule,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    BlButtonModule,
+    BlTransverseMenuModule,
+    MatDialogModule,
+    BlElementsDirectiveModule,
+    MatCardModule,
+    AppLayoutModule,
+    BlTableModule,
+    BlTextFieldModule,
+    BlFilterTablePanelModule,
+    BlMultiComboModule,
+    BlListBoxModule,
+    BlErrorModule,
+    EditableTable2Module,
+    BlLabelModule,
 
-    ],
+  ],
     exports: [SAMPLE_COMPONENTS],
     providers: [],
   })

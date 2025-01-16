@@ -1,7 +1,19 @@
+
 <div style="margin-right: 12px">
+  <h4>{{'sample.action_banner.exemple1'| translate }}</h4>
   <bl-action-banner
     [buttonActions]="buttonActions"
     [testLabelValue]="'action_banner'"
+  ></bl-action-banner>
+
+</div>
+
+<div style="margin-right: 12px;margin-top: 25px">
+  <h4>{{'sample.action_banner.exemple2'| translate }}</h4>
+  <bl-action-banner
+    [buttonActions]="buttonActions2"
+    [testLabelValue]="'action_banner'"
+    [space_between]="true"
   ></bl-action-banner>
 
 </div>

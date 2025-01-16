@@ -1,9 +1,22 @@
-<bl-button
-  (click)="openSample1()" [primary]="true" [testLabelValue]="'open-sample-1-button'"
-  [title]="'sample.generic-dialog.buttonTitle'|translate"
-></bl-button>
-<br>
-<bl-button (click)="openSample2()"
-  [primary]="true" [testLabelValue]="'open-sample-2-button'" [title]="'sample.generic-dialog.buttonTitle2'|translate"
-  class="mt-3"
-></bl-button>
+<div>
+  <h4 class="bl-zt-h4 mb-3">{{'sample.generic-dialog.sample1-title'|translate}}</h4>
+  <bl-button
+    (click)="openSample1()" [primary]="true" [testLabelValue]="'open-sample-1-button'"
+    [title]="'sample.generic-dialog.buttonTitle'|translate"
+  ></bl-button>
+</div>
+<div class="mt-4">
+  <h4 class="bl-zt-h4 mb-3">{{'sample.generic-dialog.sample2-title'|translate}}</h4>
+  <bl-button (click)="openSample2()"
+    [primary]="true" [testLabelValue]="'open-sample-2-button'" [title]="'sample.generic-dialog.buttonTitle2'|translate"
+    class="mt-3"
+  ></bl-button>
+</div>
+<div class="mt-4">
+  <h4 class="bl-zt-h4 mb-3">{{'sample.generic-dialog.sample3-title'|translate}}</h4>
+  <span  [innerHTML]="'pages.variables.generic-dialog.sample3'|translate"></span>
+  <bl-button (click)="openSample3()"
+             [primary]="true" [testLabelValue]="'open-sample-3-button'" [title]="'sample.generic-dialog.buttonTitle3'|translate"
+             class="mt-3"
+  ></bl-button>
+</div>

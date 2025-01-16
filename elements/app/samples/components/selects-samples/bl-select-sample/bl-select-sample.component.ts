@@ -151,7 +151,7 @@ export class BlSelectSampleComponent
   private validatorRequired(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const selectedValue= control.value;
-      console.log("value list :",selectedValue)
+    //  console.log("value list :",selectedValue)
       if (selectedValue && selectedValue.length!=0) {
         return null; // Validation passed
       } else {

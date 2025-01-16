@@ -27,26 +27,28 @@
              [showCloseBtn]="true"
              [subTitle]="subTitle3"
              [testLabelValue]="'Close_Card'"
-             [title]="cardTitle3">
+             [title]="cardTitle3"
+             [cardStyle]="'width:90%'">
     </bl-card>
 
     <bl-code-tab [codeTabs]="exempleCardCode3" testlabel="code_exemple_3"></bl-code-tab>
 
     <h3 class="mt-4 mb-4">Exemple d'implémentation personalisé d'une carte : </h3>
 
-    <bl-card [headerDevider]="true" [testLabelValue]="'Customised_card'">
+    <bl-card [headerDevider]="true" [testLabelValue]="'Customised_card'" [cardStyle]="'width:90%'">
         <bl-card-header
         (onCloseEvent)="onCloseFun($event)"
         [avatarImg]="avatarImgUrl"
         [showCloseBtn]="true"
         [subTitle]="subTitle3" [testLabelValue]="'Customised_card'"
         [title]="cardTitle3"
+        [headerDevider]="true"
         >
         </bl-card-header>
         <bl-card-body [style] ="'m-2'" [testLabelValue]="'Customised_card'">
             <span>Contenue spécifique ...</span>
           <bl-card-actions [class]="'mb-2'">
-            <bl-button (click)="onShare($event)" [id]="'share_btn'" [primary]="false" 
+            <bl-button (click)="onShare($event)" [id]="'share_btn'" [primary]="false"
                 [testLabelValue]="'_button_share'" [title]="'SHARE'">
             </bl-button>
           </bl-card-actions>
@@ -58,7 +60,7 @@
     <bl-code-tab [codeTabs]="exempleCardCode4" testlabel="code_exemple_4"></bl-code-tab>
 
 
-    <bl-card [headerDevider]="true" [testLabelValue]="'Customised2_card'" [title]="'Coordonnées contact'">
+    <bl-card [headerDevider]="true" [testLabelValue]="'Customised2_card'" [title]="'Coordonnées contact'" [cardStyle]="'width:90%'">
         <form class="mt-3">
             <bl-text-field [label]="'Nom'" [placeholder]="'Nom'" testlabel = "Customised2_card_text_field"></bl-text-field>
         </form>

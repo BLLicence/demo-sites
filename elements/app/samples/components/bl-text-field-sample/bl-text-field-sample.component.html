@@ -19,11 +19,6 @@
     </div>
     <div class="row">
       <div class="col-lg-4">
-        <bl-text-field [formControl]="formGroup.controls.label3" [id]="'3'" [label]="'sample.libelle.read-only'"
-          [readOnly]=true [testLabelValue]="'input3'">
-        </bl-text-field>
-      </div>
-      <div class="col-lg-4">
         <bl-text-field [formControl]="formGroup.controls.label4" [id]="'4'" [label]="'sample.libelle.uppercase'"
           [testLabelValue]="'input4'" [upperCase]="true">
         </bl-text-field>
@@ -69,16 +64,70 @@
         <p>{{'sample.text-field.onBlur-desc'|translate}}</p>
       </div>
       <div class="col-lg-4">
-        <bl-text-field [customErrorsMap]="customErrorMap" [formControl]="formGroup.controls.label10" [id]="'10'"
+        <bl-text-field [customErrorsMap]="customErrorMap" [formControl]="formGroup.controls.label10" [id]="'10'" [tooltip]="'example'"
           [label]="'sample.libelle.suffix'" [maxLength]="20" [placeholder]="'sample.libelle.suffix'" [suffixIcon]="'berger_levrault'"
-          [testLabelValue]="'input10'" [type]="'text'">
+          [testLabelValue]="'input10'" [type]="'text'" [suffixInformations]="simpleSuffixExample">
         </bl-text-field>
+      </div>
+    </div>
+    <div class="row mt-1 ">
+      <h5>{{'sample.text-field.suffixExample'|translate}} </h5>
+      <div class="col-lg-4">
+        <bl-text-field [customErrorsMap]="customErrorMap" [formControl]="formGroup.controls.label13" [id]="'10'" [suffixInformations]="customSuffixExample"
+                                                 [label]="'sample.libelle.suffix'" [maxLength]="20" [placeholder]="'sample.libelle.suffix'" [suffixIcon]="icon_Arrow"
+                                                 [testLabelValue]="'input10'" [type]="'text'">
+      </bl-text-field>
+      </div>
+      <div class="col-lg-4">
+        <bl-text-field [customErrorsMap]="customErrorMap" [formControl]="formGroup.controls.label14" [id]="'10'" [suffixInformations]="customSuffixExample2"
+                       [label]="'sample.libelle.suffix'" [maxLength]="20" [placeholder]="'sample.libelle.suffix'" [suffixIcon]="icon_Folder"
+                       [testLabelValue]="'input10'" [type]="'text'">
+        </bl-text-field>
+      </div>
 
+    </div>
+<!-- Read only examples -->
+    <div>
+      <h4>{{'sample.text-field.exampleReadOnly'|translate}} </h4>
+      <div class="row">
+        <div class="col-lg-4">
+          <bl-text-field [formControl]="formGroup.controls.label9" [id]="'9'" [isNumber]="true"
+                         [isPhone]="true" [label]="'sample.libelle.erreurTel'" [readOnly]="true" [suffixIcon]="'phone'"
+                         [testLabelValue]="'input9'" type="tel">
+          </bl-text-field>
+        </div>
+        <div class="col-lg-4">
+          <bl-text-field [formControl]="formGroup.controls.label3" [id]="'3'" [label]="'sample.libelle.read-only'"
+                         [readOnly]=true [testLabelValue]="'input3'" [suffixIcon]="'berger_levrault'">
+          </bl-text-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <bl-text-field [formControl]="formGroup.controls.label3" [id]="'3'" [label]="'sample.libelle.read-only'"
+                         [testLabelValue]="'input3'" [readOnly]="true">
+          </bl-text-field>
+        </div>
+        <div class="col-lg-4">
+          <bl-text-field [displayCurrency]="true" [formControl]="formGroup.controls.label6" [id]="'6'"
+                         [readOnly]="true" [isNumber]="true" [label]="'sample.libelle.number'"
+                         [testLabelValue]="'input6'" [type]="'number'">
+          </bl-text-field>
+        </div>
       </div>
     </div>
 
+
     <div class="row " style="border: rgba(62,56,161,0.34) 2px solid; width: 95%">
       <h4 class="m-4">{{'sample.text-field.mask'|translate}}</h4>
+      <p class="subtitle color-square">{{'sample.text-field.exampleText'|translate}}<span class="bold"> {{'sample.text-field.exampleIbanFormat'|translate}} </span></p>
+      <ul>
+        <li><span class="bold">{{'sample.text-field.FR'|translate}}: </span>{{'sample.text-field.defaultDisplayMask'|translate}} </li>
+        <li><span class="bold">{{'sample.text-field.0'|translate}} : </span> {{'sample.text-field.numberInput'|translate}} </li>
+        <li><span class="bold">{{'sample.text-field.a'|translate}} : </span>{{'sample.text-field.stringInput'|translate}} </li>
+        <li><span class="bold"> * : </span>{{'sample.text-field.*'|translate}} </li>
+
+      </ul>
       <div class="col-lg-4">
         <h6 class="mb-4">{{'sample.text-field.phoneExample'|translate}}</h6>
 
@@ -92,7 +141,7 @@
         <h6  class="mb-4">{{'sample.text-field.ibanExample'|translate}}</h6>
 
         <bl-text-field   [customErrorsMap]="customErrorMap"
-                         [formControl]="formGroup.controls.label12" [id]="'12'" [isNumber]="true"
+                         [formControl]="formGroup.controls.label12" [id]="'12'"
                          [label]="'sample.text-field.iban'"    [inputMaskOptions]="ibanMaskOption"  [suffixIcon]="'minus_fill'"
                          [testLabelValue]="'input12'" type="tel">
         </bl-text-field>

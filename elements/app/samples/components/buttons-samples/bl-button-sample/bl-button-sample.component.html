@@ -1,9 +1,9 @@
 <div class="button-container">
-    <bl-button [widthOfButton]="80" (click)="doOnClickValidate()" [id]="'btnValidate'" [primary]="true"
-        [testLabelValue]="'button1'" [title]="'sample.button.validate'"></bl-button>
+    <bl-button (click)="doOnClickValidate()" [id]="'btnValidate'" [primary]="true" [testLabelValue]="'button1'"
+        [title]="'sample.button.validate'" [widthOfButton]="80"></bl-button>
     <bl-button (click)="doOnClickRollback()" [id]="'btnRollback'" [testLabelValue]="'button2'"
         [title]="'sample.button.rollback'"></bl-button>
-    <bl-button [disabled]="true" (click)="doOnClickDelete()" [id]="'btnDelete'" [testLabelValue]="'button3'"
+    <bl-button (click)="doOnClickDelete()" [id]="'btnDelete'" [testLabelValue]="'button3'"
         [title]="'sample.button.delete'"></bl-button>
 </div>
 <br>
@@ -59,10 +59,10 @@
 <div>{{'sample.button.demo.addButton.title' | translate}}</div>
 <br>
 <div class="button-container">
-    <bl-button (click)="doOnClickValidate()" [id]="'btnAddText'" [addButton]="true" [testLabelValue]="'addition_text'" [title]="'sample.button.add-text-field'"></bl-button>
+    <bl-button (click)="doOnClickValidate()" [addButton]="true" [id]="'btnAddText'" [testLabelValue]="'addition_text'" [title]="'sample.button.add-text-field'"></bl-button>
 </div>
 <h3 [innerHTML]="'sample.button.demo.button.recommendation.title'|translate" class="anchor border-bottom mt-4 bl-zt-h2"> </h3>
 <p [innerHTML]="'sample.button.demo.button.recommendation.tense1' | translate"></p>
 <p [innerHTML]="'sample.button.demo.button.recommendation.tense2' | translate"></p>
 <p [innerHTML]="'sample.button.demo.button.recommendation.tense3' | translate"></p>
-<p class="mb-2" [innerHTML]="'sample.button.demo.button.recommendation.tense4' | translate"></p>
+<p [innerHTML]="'sample.button.demo.button.recommendation.tense4' | translate" class="mb-2"></p>

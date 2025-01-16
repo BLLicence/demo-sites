@@ -106,7 +106,7 @@ export class BlTableWithFilterUpTemplateSampleComponent implements OnInit {
           globalParam: {
               right: {
                   groupActionButton: true, // action button at the top of header
-                  expandableRows: true, // is the table having expandable rows
+                  expandableRows: false, // is the table having expandable rows
                   filter: true, // because no exist filter
                   columnAction: true, // right to have action column
                   selectOne: true, //- right to select one row
@@ -183,7 +183,7 @@ export class BlTableWithFilterUpTemplateSampleComponent implements OnInit {
           globalParam: {
               right: {
                   groupActionButton: true, // action button at the top of header
-                  expandableRows: true, // is the table having expandable rows
+                  expandableRows: false, // is the table having expandable rows
                   filter: true, // because no exist filter
                   columnAction: true, // right to have action column
                   selectOne: true, //- right to select one row
@@ -306,15 +306,7 @@ export class BlTableWithFilterUpTemplateSampleComponent implements OnInit {
  * Définition des buttons qui doit être afficher en haut du tableau
  */
   private getGroupedButtonActions() {
-     this.actionDeleteColumn.eventEmitter = new EventEmitter();
-      this.actionDeleteColumn.eventEmitter.subscribe((value) => {
-          this.staticBddService.deleteUser(value.id).subscribe(() => {
-          this.updateList(value, this.datasource,this.config,this.verticalTable);
-              this.toasterService.success('sample.datatable.event.delete.ok');
-          });
-      });
-
-      return [this.actionDeleteColumn,this.openAction];
+      return [this.openAction];
   }
 
  /**

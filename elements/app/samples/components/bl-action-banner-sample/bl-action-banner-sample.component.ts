@@ -9,61 +9,15 @@ import {BlMenuAction} from '../../../../../../../libs/shared-ui/src/lib/models/b
 })
 export class BlActionBannerSampleComponent implements OnInit {
     public buttonActions: BlAction[] = [];
+
+  public buttonActions2: BlAction[] = [];
     private eventNotify = new EventEmitter();
 
     constructor(public toasterService: ToasterService) {
-        // populate list of buttons
-        const bl_button_1: BlAction = {
-            idAction: '',
-            label: 'Button1',
-            eventEmitter: this.eventNotify,
-            primary: true,
-            idSelector: 'btn_1',
-            buttonType: 'mat-stroked-button',
-            componentType: 'bl-button',
-            icon: {
-                icon: 'ph ph-plus', // added icon for demonstration
-            },
-            testLabelValue: 'Button1'
-        };
+      // populate list of buttons
+      this.populateFirstList();
+      this.populateSecondList();
 
-        const bl_button_2: BlAction = {
-            idAction: '',
-            label: 'Button2',
-            eventEmitter: this.eventNotify,
-            primary: false,
-            idSelector: 'btn_2',
-            buttonType: 'mat-stroked-button',
-            componentType: 'bl-button',
-            icon: {
-                icon: 'ph ph-minus', // added icon for demonstration
-            },
-            testLabelValue: 'Button2'
-        };
-
-        const split_list = this.initSplitButtons();
-
-        const bl_transverse_menu_4: BlAction = {
-            idAction: '',
-            label: 'Menu4',
-            idSelector: 'btn_4',
-            buttonType: 'mat-stroked-button',
-            primary: false,
-            componentType: 'bl-transverse-menu',
-            listAction: [
-                {
-                    idAction: 'notify',
-                    label: 'Menu6',
-                    eventEmitter: this.eventNotify,
-                },
-            ],
-            icon: {
-                icon: 'ph ph-gear', // added icon for demonstration
-            },
-            testLabelValue: 'Menu4'
-        };
-
-        this.buttonActions.push(bl_button_1, bl_button_2, split_list, bl_transverse_menu_4);
     }
 
     initSplitButtons(): BlAction {
@@ -118,4 +72,92 @@ export class BlActionBannerSampleComponent implements OnInit {
     ) {
         this.toasterService.success('sample.datatable.event.notify');
     }
+
+  private populateFirstList() {
+    const bl_button_1: BlAction = {
+      idAction: '',
+      label: 'Button1',
+      eventEmitter: this.eventNotify,
+      primary: true,
+      idSelector: 'btn_1',
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      icon: {
+        icon: 'ph ph-plus', // added icon for demonstration
+      },
+      testLabelValue: 'Button1'
+    };
+
+    const bl_button_2: BlAction = {
+      idAction: '',
+      label: 'Button2',
+      eventEmitter: this.eventNotify,
+      primary: false,
+      idSelector: 'btn_2',
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      icon: {
+        icon: 'ph ph-minus', // added icon for demonstration
+      },
+      testLabelValue: 'Button2'
+    };
+
+    const split_list = this.initSplitButtons();
+
+    const bl_transverse_menu_4: BlAction = {
+      idAction: '',
+      label: 'Menu4',
+      idSelector: 'btn_4',
+      buttonType: 'mat-stroked-button',
+      primary: false,
+      componentType: 'bl-transverse-menu',
+      listAction: [
+        {
+          idAction: 'notify',
+          label: 'Menu6',
+          eventEmitter: this.eventNotify,
+        },
+      ],
+      icon: {
+        icon: 'ph ph-gear', // added icon for demonstration
+      },
+      testLabelValue: 'Menu4'
+    };
+
+    this.buttonActions.push(bl_button_1, bl_button_2, split_list, bl_transverse_menu_4);
+  }
+
+  private populateSecondList() {
+    const button_left: BlAction = {
+      idAction: '',
+      label: 'Boutton Left',
+      eventEmitter: this.eventNotify,
+      primary: true,
+      idSelector: 'btn_1_left',
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      icon: {
+        icon: 'ph ph-arrow-left', // added icon for demonstration
+      },
+      testLabelValue: 'boutton-left'
+    };
+
+    const button_right: BlAction = {
+      idAction: '',
+      label: 'Button Right',
+      eventEmitter: this.eventNotify,
+      primary: false,
+      idSelector: 'btn_2_right',
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      icon: {
+        icon: 'ph ph-arrow-right', // added icon for demonstration
+      },
+      testLabelValue: 'boutton-right'
+    };
+
+    this.buttonActions2.push(button_left,button_right);
+
+
+  }
 }

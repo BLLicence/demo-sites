@@ -1,14 +1,73 @@
 <div class="row">
   <div class="col">
+    <h4>{{ 'sample.dialog.generic.title' | translate }} </h4>
+
+    <h6 class="mt-2">{{ 'sample.dialog.generic.success' | translate }}</h6>
+    <bl-button
+      (click)="openGenericSuccessDialog()"
+      [primary]="true"
+      [testLabelValue]="'succes_generic_dialog'"
+      title="Ouvrir dialogue de succès générique"
+    ></bl-button>
+    <p class="m-2">{{ 'sample.dialog.generic.code-used' | translate }}<code>blDialogService.openDialog(config,DialogType.SUCCES)</code></p>
+
+    <h6 class="mt-2">{{ 'sample.dialog.generic.error' | translate }}</h6>
+    <bl-button
+      (click)="openGenericErrorDialog(false)"
+      [primary]="true"
+      [testLabelValue]="'error_generic_dialog'"
+      title="Ouvrir dialogue d'erreur générique"
+    ></bl-button>
+    <p class="m-2">{{ 'sample.dialog.generic.code-used' | translate }}<code>blDialogService.openDialog(config,DialogType.ERROR)</code></p>
+
+    <h6 class="mt-2">{{ 'sample.dialog.generic.system-error' | translate }}</h6>
+    <bl-button
+      (click)="openGenericErrorDialog(true)"
+      [primary]="true"
+      [testLabelValue]="'system_error_generic_dialog'"
+      title="Ouvrir dialogue d'erreur système générique"
+    ></bl-button>
+    <p class="m-2">{{ 'sample.dialog.generic.code-used' | translate }}<code>blDialogService.openDialog(config,DialogType.SYSTEM_ERROR)</code></p>
+
+    <h6 class="mt-2">{{ 'sample.dialog.generic.info' | translate }}</h6>
+    <bl-button
+      (click)="openGenericInfoDialog()"
+      [primary]="true"
+      [testLabelValue]="'info_generic_dialog'"
+      title="Ouvrir dialogue d'info générique"
+    ></bl-button>
+    <p class="m-2">{{ 'sample.dialog.generic.code-used' | translate }}<code>blDialogService.openDialog(config,DialogType.INFO)</code></p>
+
+    <h6 class="mt-2">{{ 'sample.dialog.generic.save' | translate }}</h6>
+    <bl-button
+      (click)="openGenericSaveDialog()"
+      [primary]="true"
+      [testLabelValue]="'save_generic_dialog'"
+      title="Ouvrir dialogue de sauvegarde générique"
+    ></bl-button>
+    <p class="m-2">{{ 'sample.dialog.generic.code-used' | translate }}<code>blDialogService.openDialog(config,DialogType.SAVE)</code></p>
+
+    <h6 class="mt-2">{{ 'sample.dialog.generic.delete' | translate }}</h6>
+    <bl-button
+      (click)="openGenericDeleteDialog()"
+      [primary]="true"
+      [testLabelValue]="'delete_generic_dialog'"
+      title="Ouvrir dialogue de suppression générique"
+    ></bl-button>
+    <p class="m-2">{{ 'sample.dialog.generic.code-used' | translate }}<code>blDialogService.openDialog(config,DialogType.DELETE)</code></p>
+
+  </div>
+  <div class="col">
+    <h4>{{ 'sample.dialog.deprecated-function' | translate }}</h4>
+    <!-- success -->
     <h6 class="mt-2">{{ 'sample.dialog.success.description' | translate }}</h6>
     <bl-button
       (click)="openSuccessDialog()"
       [primary]="true"
       [testLabelValue]="'succes_dialog'"
       title="{{ 'sample.dialog.success.button' | translate }}"
-    >
-    </bl-button>
-
+    ></bl-button>
+    <!-- error -->
     <h6 class="mt-2">{{ 'sample.dialog.error.description' | translate }}</h6>
     <bl-button
       (click)="openErrorDialog()"
@@ -17,7 +76,34 @@
       title="{{ 'sample.dialog.error.button' | translate }}"
     >
     </bl-button>
-
+    <!-- save -->
+    <h6 class="mt-2">{{ 'sample.dialog.save.description' | translate }}</h6>
+    <bl-button
+      (click)="openSaveDialog()"
+      [primary]="true"
+      [testLabelValue]="'save_dialog'"
+      title="{{ 'sample.dialog.save.button' | translate }}"
+    >
+    </bl-button>
+    <!-- delete -->
+    <h6 class="mt-2">{{ 'sample.dialog.delete.description' | translate }}</h6>
+    <bl-button
+      (click)="openDeleteDialog()"
+      [primary]="true"
+      [testLabelValue]="'delete_dialog'"
+      title="{{ 'sample.dialog.delete.button' | translate }}"
+    >
+    </bl-button>
+    <!-- info -->
+    <h6 class="mt-2">{{ 'sample.dialog.info.description' | translate }}</h6>
+    <bl-button
+      (click)="openInfoDialog()"
+      [primary]="true"
+      [testLabelValue]="'custom_info_dialog'"
+      title="{{ 'sample.dialog.info.button' | translate }}"
+    >
+    </bl-button>
+    <!-- system error -->
     <h6 class="mt-2">
       {{ 'sample.dialog.technicalError.description' | translate }}
     </h6>
@@ -28,36 +114,7 @@
       title="{{ 'sample.dialog.technicalError.button' | translate }}"
     >
     </bl-button>
-  </div>
-
-  <div class="col">
-    <h6 class="mt-2">{{ 'sample.dialog.save.description' | translate }}</h6>
-    <bl-button
-      (click)="openSaveDialog()"
-      [primary]="true"
-      [testLabelValue]="'save_dialog'"
-      title="{{ 'sample.dialog.save.button' | translate }}"
-    >
-    </bl-button>
-
-    <h6 class="mt-2">{{ 'sample.dialog.delete.description' | translate }}</h6>
-    <bl-button
-      (click)="openDeleteDialog()"
-      [primary]="true"
-      [testLabelValue]="'delete_dialog'"
-      title="{{ 'sample.dialog.delete.button' | translate }}"
-    >
-    </bl-button>
-
-    <h6 class="mt-2">{{ 'sample.dialog.info.description' | translate }}</h6>
-    <bl-button
-            (click)="openInfoDialog()"
-            [primary]="true"
-            [testLabelValue]="'custom_info_dialog'"
-            title="{{ 'sample.dialog.info.button' | translate }}"
-    >
-    </bl-button>
-
+    <!-- customised -->
     <h6 class="mt-2">{{ 'sample.dialog.custom.description' | translate }}</h6>
     <bl-button
       (click)="openCustomDialog()"
@@ -67,41 +124,31 @@
     >
     </bl-button>
   </div>
-</div>
-<br>
-<br>
-<div class="row">
-  <div class="col">
-    <h6 class="mt-2">{{ 'sample.dialog.save.description' | translate }}</h6>
-    <bl-button
-            (click)="openSaveDialogBloc()"
-            [primary]="true"
-            [testLabelValue]="'save_dialog'"
-            title="{{ 'sample.dialog.save.button' | translate }} - {{ 'sample.dialog.blocker' | translate }}"
-    >
-    </bl-button>
+
+  <br>
+  <br>
+  <div class="row">
+    <div class="col">
+      <h4 class="mt-2">{{ 'sample.dialog.blocker.title' | translate }}</h4>
+      <bl-button
+        (click)="openSaveDialogBloc()"
+        [primary]="true"
+        [testLabelValue]="'save_dialog_blocker'"
+        title="{{ 'sample.dialog.blocker.button' | translate }}"
+      >
+      </bl-button>
+    </div>
+
+    <div class="col">
+
+      <h6 class="mt-2">{{ 'sample.dialog.custom.description' | translate }}</h6>
+      <bl-button
+        (click)="openCustomDialog(1000)"
+        [primary]="true"
+        [testLabelValue]="'custom_dialog'"
+        title="{{ 'sample.dialog.custom.button' | translate }} - {{ 'sample.dialog.blocker' | translate }}"
+      >
+      </bl-button>
+    </div>
+
   </div>
-
-  <div class="col">
-    <h6 class="mt-2">{{ 'sample.dialog.custom.description' | translate }}</h6>
-    <bl-button
-      (click)="openCustomDialog(1000)"
-      [primary]="true"
-      [testLabelValue]="'custom_dialog'"
-      title="{{ 'sample.dialog.custom.button' | translate }} - {{ 'sample.dialog.blocker' | translate }}"
-    >
-    </bl-button>
-  </div>
-
-</div>
-<div class="mt-3 w-50">
-<h6>{{ 'sample.dialog.custom.pathEnum' | translate }}</h6>
-
-  <ul>
-    <li>{{ 'sample.dialog.custom.errorLink' | translate }}</li>
-    <li>{{ 'sample.dialog.custom.warningLink' | translate }}</li>
-    <li>{{ 'sample.dialog.custom.questionLink' | translate }}</li>
-    <li>{{ 'sample.dialog.custom.successLink' | translate }}</li>
-    <li>{{ 'sample.dialog.custom.technicalLink' | translate }}</li>
-  </ul>
-</div>

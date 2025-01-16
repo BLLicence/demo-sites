@@ -104,6 +104,7 @@ export const Card_Close_event_HTML = `
   [footerDivider]="true"
   [body]="cardBody3"
   [footer]="cardFooter"
+  [headerDevider]="true"
   (onCloseCard)="onCloseFun($event)">
 </bl-card>`
 
@@ -130,11 +131,12 @@ export const CUSTOM_CARD_COMPONENTS_HTML = `
         [title]="cardTitle3"
         [subTitle]="subTitle3"
         [avatarImg]="avatarImgUrl"
+        [headerDevider]="true"
         [showCloseBtn]="true" (onCloseEvent)="onCloseFun($event)">
         </bl-card-header>
         <bl-card-body [style] ="'m-2'">
             <span>Contenue spécifique ...</span>
-            <bl-card-actions [classStyle]="'mb-2'">
+            <bl-card-actions [class]="'mb-2'">
               <bl-button (click)="onShare($event)" [id]="'share_btn'" [primary]="false"
                   [testLabelValue]="'_button_share'" [title]="'SHARE'">
               </bl-button>

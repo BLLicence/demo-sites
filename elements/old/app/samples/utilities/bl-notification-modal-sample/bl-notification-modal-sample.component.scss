@@ -1,0 +1,13 @@
+.border-card{
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+}
+@media(max-width:450px){
+   .border-card {
+      display:inline-flex;
+   }
+ }
+.notif-scroll{
+  height : 400px;
+  overflow-y: auto;
+}

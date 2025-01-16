@@ -31,6 +31,7 @@
       "dialog": "Boîte de dialogue",
       "generic-dialog": " Boîte de dialogue génerique",
       "buttons-submenu": "Boutons",
+      "logout": "Déconnexion",
       "buttons": {
         "button": "Bouton",
         "fab-menu": "Bouton flottant avec menu",
@@ -60,9 +61,9 @@
         "calendar": "Calendrier",
         "date-picker": "Champ date",
         "date-picker-range": "Champ date avec plage",
-        "period": "Champ période",
+        "bl-month-picker": "Champ période",
         "year-picker": "Champ année",
-        "hour-picker": "Champ heure"
+        "bl-time": "Champ heure"
       },
       "rich-text-editor": "Editeur de texte enrichi",
       "no-data": "Etat vide",
@@ -77,7 +78,7 @@
       "editable-list": "Liste éditable",
       "select-submenu": "Listes déroulantes",
       "selects": {
-        "simple-select": "Liste déroulante",
+        "bl-select": "Liste déroulante",
         "listbox-abstract": "Liste métier [Abstrait]",
         "multicombo-abstract": "Liste à choix multiples [Abstrait]",
         "multicombo-search": "Liste recherche à choix multiples [Abstrait]",
@@ -104,14 +105,14 @@
       "content": "Contenu",
       "tables": "Tableaux",
       "table": {
-        "generator": "Générateur",
+        "table-generator": "Table Générateur",
         "example-with-upper-filter": "Exemple avec filtre en haut",
         "example-with-side-filter": "Exemple avec filtre à droite",
         "doc": "Documentation",
         "markedFor": "Table avec Actions marquées"
       },
       "workflow": "Flux de travail",
-      "lateral" : "Navigation latérale"
+      "lateral": "Navigation latérale"
     },
     "utilities": "Utilitaires",
     "utility": {
@@ -131,10 +132,12 @@
       "tableWithFilterUpTemplate": "Tableau avec filtres en haut",
       "tables": "Tableaux",
       "simpleTable": "Tableau simple",
-      "accesibility": "Accessibilité"
+      "accesibility": "Accessibilité",
+      "tableWithPanel75pc": "Table avec Panel 75%"
     },
     "forms": "Formulaires",
     "formExamples": {
+      "test": "Page de test",
       "complexForm": "Formulaire complexe",
       "simpleForm": "Formulaire simple",
       "tapGroupForm": "Formulaire à onglets",
@@ -150,7 +153,8 @@
   },
   "sitemap": {
     "title": "Plan du site",
-    "contexte": "Changer de contexte"
+    "contexte": "Changer de contexte",
+    "other": "Autres"
   },
   "footer": {
     "logo": "Logo Berger-Levrault",
@@ -171,6 +175,7 @@
         "results": "Résultats",
         "showresults": "Voir tous les résultats",
         "closebutton": "Fermer"
+
       },
       "notification.title": "Notifications"
     },
@@ -244,6 +249,9 @@
     "icon-picker": {
       "description": "Le sélecteur d'icône est un composant permettant de sélectionner une icône dans une liste donnée. Il peut être utilisé pour la personnalisation d'un composant par le client (ex: raccourci externe) ou par l'utilisateur selon les besoins projets. <br> \n Les icônes visibles dans la liste proviennent de phosphoricons en version light."
     },
+    "logout-dialog": {
+      "description": "La modale de déconnexion permet d'afficher un message à l'utilisateur pour l'avertir de sa future déconnexion au logiciel BL.<br>Elle est obligatoire pour les projets étant sur la console SAAS."
+    },
     "color-picker": {
       "description": "Deux composants sont proposés comme sélecteur de couleur, le premier composant <code>bl-color-picker</code> permet de sélectionner une couleur dans une roue chromatique , et le deuxième composant <code>bl-color-circles</code> permet de choisir une couleur dans une palettes de couleurs prédéfinies.",
       "input": {
@@ -284,13 +292,13 @@
         "usage": "Le formulaire doit avoir l'attribut 'formGroup' <br> Chaque champ du formulaire doit être accompagné de l'attribut 'formControlName' <br> Le composant qui permet l'affichage des erreurs en haut est '&lt;bl-form-error-display&gt;'<br> Voici un exemple de formulaire:<br>"
       }
     },
-    "custom-error" : {
+    "custom-error": {
       "description": "Cette page présente comment déclarer un message spécifique dans les erreurs customisés.<br> Les composants qui supportent les erreurs customisés sont les suivants : <code>'bl-text-field' , 'bl-text-area', 'bl-text-decimal-field' ,'bl-datepicker','bl-month-picker','bl-datepicker-range','bl-lunar-date-picker','bl-auto-abstract', 'bl-time',' bl-year-picker','bl-list-box-abstract','bl-multi-combo-abstract','bl-multi-combo-search-abstract'</code>",
-      "declaration" : "<p>Une première étape est de bien créer votre formulaire à l'aide du FormGroup d'angular.</p> <p>Puis définir le code d'erreur et le chemin du message d'erreur dans le paramettre <code>customErrorMap</code> du formControl ciblé.</p><p>En dernier il est necessaire de créer la méthode qui vas faire le traitement de validation sur le champ,</p><p> cette fonction doit retourner un objet comportant le code d'erreur et le paramettre à afficher dans le message d'erreur : par exemple <code>{ maxLengthError: {'maxAuthorised':10} };</code></p>" ,
+      "declaration": "<p>Une première étape est de bien créer votre formulaire à l'aide du FormGroup d'angular.</p> <p>Puis définir le code d'erreur et le chemin du message d'erreur dans le paramettre <code>customErrorMap</code> du formControl ciblé.</p><p>En dernier il est necessaire de créer la méthode qui vas faire le traitement de validation sur le champ,</p><p> cette fonction doit retourner un objet comportant le code d'erreur et le paramettre à afficher dans le message d'erreur : par exemple <code>{ maxLengthError: {'maxAuthorised':10} };</code></p>",
       "subtitle": "Exemple de champs avec erreur customisée :",
-      "label1" : "Saisissez plus de 5 caractères",
-      "label2" : "Saisissez moin de 5 caractères",
-      "label3" : "Entrez zero",
+      "label1": "Saisissez plus de 5 caractères",
+      "label2": "Saisissez moin de 5 caractères",
+      "label3": "Entrez zero",
       "maxLength": "Nombre de caractères autorisés {{maxLengthError.maxAuthorised}}",
       "minLength": "Minimun de nombre de caractères autorisés {{minLengthError.minAuthorised}}",
       "unvalidNumber": "La valeur {{unvalidNumber.number}} est invalide"
@@ -341,7 +349,7 @@
     },
     "bl-stepper": {
       "description": "<p>Ce composant offre une architecture de page avec étapes, comportant par défaut les actions 'Précédent' et 'Suivant' et 'Terminer'.</p><p> Pour définir une étape il suffit d'imbriquer votre contenue dans la balise <code>bl-step</code>.</p><p>Une liste d'actions globales est aussi permise en entrée du <code>bl-stepper</code></p> ",
-      "config": "Affin d'exploiter les méthodes <code>nextStep()</code> et <code>previouseStep()</code> du composant stepper , vous devez ajouter un attribut de type <code>BlStepperComponent</code> en tant que <code>@ViewChild</code> dans votre sample",
+      "config": "Affin d'exploiter les méthodes <code>nextStep()</code> et <code>previouseStep()</code> du composant stepper , vous devez ajouter un attribut de type <code>BlStepperComponent</code> en tant que <code>@ViewChild</code> dans votre sample<br> Le composant est mis en flex et avec une hauteur minimum définit, vous avez la possibilité de définir le style voulus au niveau du contenu de la step.",
       "input": {
         "editable": "Activer ou désactiver la possibilité de retourner en étape précédente après validation, par défaut activé.",
         "testLabelValue": "Surcharge pour les tests automatisés la valeur de testLabel du stepper."
@@ -356,7 +364,7 @@
     },
     "page-template": {
       "title": "Template de page",
-      "description": "Ce composant représente une structure prédéfinie de la page <br> qu'on peux utilisé pour accélérer le dévelopement des interface html, et se focaliser sur le contenue métié.<br>",
+      "description": "Ce composant représente une structure prédéfinie de la page <br> qu'on peut utiliser pour accélérer le dévelopement des interface html, et se focaliser sur le contenue métié.<br>",
       "usage": "<p>Afin d'exploiter ce template de page , le code si-dessous démontre les différentes parties à alimenter dans le modèle de page html :</p>"
     },
     "datatable": {
@@ -396,12 +404,14 @@
       "select": "Fonction d'ouverture du fichier.",
       "uploadFile": "Fonction de téléchargement du fichier vers le server client,Cette fonction est déclanché sauf si le fichier est valid. Obligatoir si l'autoUpload est activé ",
       "removeUploadedFile": "Fonction de suppression du fichier du serveur client. Obligatoir si l'autoUpload est activé ",
+
       "testLabelValue": "Surcharge pour les tests automatisés la valeur de testLabel du fichier selectionné."
     },
     "bl-drag-and-drop-files": {
       "description": "Exemple d'implémentation du composant bl-drag-and-drop-files , ce composant permet de déposer une ou plusieurs Pièces Jointes à une page ou un formulaire. Le composant offre la possibiliter de définir le mode de téléchargement des fichiers (manuel ou bien automatique) en spécifiant les entrées requise pour cela. Le composant peux être affiché horizontalement ou verticalement, Et prendra par défaut l'aspect vertical en modile.",
       "declaration": "Pour implémenter l'ajout et dépos des fichiers , il suffit de définir le composant 'bl-drag-and-drop-files' avec les entrées necessaires , et mettre le composant 'bl-attachment-and-delete' à l'intérieur pour l'affichage des fichiers avec le progrès et la suppression.",
       "manualValidation": "Drag and drop avec validation manuel :",
+      "readonly": "Drag and drop en lecture seule :",
       "autoUpdateExemple": "Drag and drop avec téléchargement automatique activé :",
       "horizontalDisplay": "Drag and drop affichage horizontal :",
       "customErrors": "Drag and drop avec des erreurs spécifiques :",
@@ -417,11 +427,16 @@
         "horizontalDisplay": "Pour activer l'affichage horizontale du composant , par défaut désactivé.",
         "convertSizeFunc": "Facultatif, methode de conversion de taille des fichier. Par défaud convertie en Ko.",
         "label": "Libellé à afficher dans le conteneur de dépos des fichiers.",
-        "testLabelValue": "Surcharge pour les tests automatisés la valeur de testLabel du composant drag and drop."
-      }
+        "testLabelValue": "Surcharge pour les tests automatisés la valeur de testLabel du composant drag and drop.",
+        "hint": "Le text à affiché en dessous du conteneur des fichiers , par défaut on affiche les extensions accéptés",
+        "readOnly": "Fonction de lecture seule"
+      },
+      "hint": "Ce-ci est un hint"
     },
     "abstract": {
       "quickSearch": {
+        "deepSearch": "Recherche approfondie",
+        "deleteSelection": "Supprimer la sélection",
         "description": "Si un composant quick search  est présente sur plusieurs pages, il est recommandé de se créer un composant métier.<br>Dans l'exemple quick search  status hérite de <b>BlQuickSearchAbstractComponent</b> et précise uniquement le chargement des données depuis le service métier.<br> Dans le template HTML on insère juste la balise <b>bl-quick-search-abstract</b> avec la surcharge de tous les input de l'abstract <br><ul><li>1. Dans le code de l'onglet TS(objet métier) on a l'implémentation métier.</li><li>2. Dans les onglets TS et HTML l'utilisation du composant métier dans une page (dans notre exemple la liste des statuts).</li></ul>Le formcontrol est de type <b>BlBasicObject</b> qui contient 3 valeurs: id, code(facultatif) et label. Si on souhaite initialiser la sélection , il faut lui faire passer un objet de type BlBasicObject, pareil pour les valeurs de la liste déroulante.<br><b>Important</b>: pour qu'une variable input soit prise en compte dans le composant métier il faut la redéfinir dans le template &lt;bl-auto-abstract&gt; du composant métier (Exemple [id]=\"id\" [appearance]=\"appearance\")"
       },
       "quicksearchmultiple": {
@@ -484,7 +499,19 @@
     },
     "attachment": {
       "description": "Cette page présente le composant Pièce Jointe permettant l'ajout de fichiers à une page ou un formulaire.",
-      "declaration": "<p>Une première étape est de bien créer votre formulaire à l'aide du FormGroup d'angular</p><p>Il est nécessaire d'importer le module BreadCrumbModule de @bl/elements pour avoir le composant d'affichage du fil d'ariane</p>"
+      "declaration": "<p>Une première étape est de bien créer votre formulaire à l'aide du FormGroup d'angular</p><p>Il est nécessaire d'importer le module BreadCrumbModule de @bl/elements pour avoir le composant d'affichage du fil d'ariane</p>",
+      "msg-file-deleted": "Fichier supprimé :",
+      "example-readonly": "Exemple en lecture seule",
+      "example1": "Pièce Jointe unique",
+      "example2": "Exemple avec affichage de taille de fichier",
+      "codes": "Code des exemples",
+      "examples": "Exemples",
+      "label": "Pièce Jointe (pdf)",
+      "errors": {
+        "required": "Le document est obligatoire",
+        "maxSize": "La taille maximale du document est de 500 Ko",
+        "wrong-format": "Le fichier doit être au format PDF"
+      }
     },
     "horizontal-gauge": {
       "description": "Le composant jauge horizontale permet de montrer l’avancement d’une activité/d’une donnée par rapport à une prévision."
@@ -885,8 +912,8 @@
       "date-picker-range": {
         "startDate": "formControl nécessaire pour piloter le contrôle et accéder aux propriétés et méthodes",
         "endDate": "formControl nécessaire pour piloter le contrôle et accéder aux propriétés et méthodes",
-        "minRange": "Date à partir de laquel on peux choisir une plage de dates. Optionel",
-        "maxRange": "Date maximal qu'on peux choisir comme date de fin de la plage de dates. Optionel"
+        "minRange": "Date à partir de laquel on peut choisir une plage de dates. Optionel",
+        "maxRange": "Date maximal qu'on peut choisir comme date de fin de la plage de dates. Optionel"
       },
       "divider": {
         "inset": "inset (par défaut : false)",
@@ -939,7 +966,7 @@
         "afterNewRowDeleted": "Événement émis après la suppression d'une ligne fraîchement ajoutée.",
         "onChangeAddForm": "Evénement emit après chaque changement dans le formulaire d'ajout d'élément dans la liste"
       },
-      "periode": {
+      "bl-month-picker": {
         "mindate": "Date minimum sélectionnable dans le datepicker au format année.mois(yyyy.mm)"
       },
       "list": {
@@ -974,34 +1001,36 @@
         "isPhone": "Si le type est un numéro de télephone (par défaut false)",
         "suffixIcon": "Icône personnalisable en suffixe (facultatif)",
         "customPhonePrompt": "Le prompt du masque de saisie(ex : un « _ » , un espace vide, etc.), par défaut <i>'_'</i>.",
-        "customPhoneSeparator": "Le caractère de séparation (ex : un « . », un espace vide, un « / », etc.), par défaut <i>'.'</i>."
+        "customPhoneSeparator": "Le caractère de séparation (ex : un « . », un espace vide, un « / », etc.), par défaut <i>'.'</i>.",
+        "suffixInformations": "Interface permettant de généraliser l'ensemble des informations nécessaires pour choisir l'interface utilisateur (UI) de votre suffix icon, ainsi que l'événement, le libellé de test (testlabel), et toutes les autres informations requises."
       },
       "form-error": {
         "customErrorMessage": {
           "abstract-list-box": {
-            "customError" : "Erreur customisé"
+            "customError": "Erreur customisé"
           },
-          "bl-select" : {
+          "bl-select": {
             "required": "Vous devez faire au moin un choix"
           },
-          "year-picker" : {
-            "invalidFormat" : "L'année est invalid"
+          "year-picker": {
+            "invalidFormat": "L'année est invalid"
           },
           "date-picker-range": {
             "notTodayDate": "Vérifiez si la date de début est celle d'aujourd'hui .",
             "notTomorrowDate": "Vérifiez si la date de fin est celle de demain."
           },
           "text-field": {
-            "maxLengthExceeded": "C'est un message d'erreur personnalisé.",
+            "maxLengthExceeded": "Maximun nombre de carractères dépassés.",
             "invalidPhoneNumber": "Le format de téléphone est incorrect.",
             "min": "Affichez votre message personnalisé.",
+            "max": "Affichez votre message personnalisé.",
             "odd": "Ce nombre est impaire."
           },
           "date-picker": {
             "dateNow": "Vous devez entrer la date d'aujourd'hui."
           },
-          "lunar-date-picker" : {
-            "invalidFormat" : "Le format de date lunaire est invalid "
+          "lunar-date-picker": {
+            "invalidFormat": "Le format de date lunaire est invalid "
           },
           "bl-time": {
             "required": "Ce champs est obligatoire",
@@ -1032,7 +1061,11 @@
         "customAction": "Facultatif. Action personnalisée de type customActionSearch (testLabel: string; icon: IconClassEnum; label: string;)",
         "actionEvent": "Evénement déclenché lors de l'action personnalisée",
         "dialogCancelButton": "Personnaliser  le tooltip , texte , affichage et choix d'icone pour le bouton Annnuler de la modal ouverte ",
-        "dialogValidationButton": "Personnaliser  l'event , le tooltip , texte , affichage et choix d'icone pour le bouton Valider de la modal ouverte  dans le cas ou le mode template est activé sinon un comportement par défaut est appliqué"
+        "dialogValidationButton": "Personnaliser  l'event , le tooltip , texte , affichage et choix d'icone pour le bouton Valider de la modal ouverte  dans le cas ou le mode template est activé sinon un comportement par défaut est appliqué",
+        "external-link": "Ouvrir le lien dans une nouvelle fenêtre",
+        "tooltip-link": "Lien tooltip",
+        "iconDeletePlaceHolder": "PlaceHolder de l'icone supprimer du composant",
+        "iconSearchPlaceHolder": "PlaceHolder de l'icone rechercher du composant"
       },
       "qsmulti": {
         "config": "La config du compasant <bl-table> pour l'affichage du list des choix ",
@@ -1052,7 +1085,9 @@
         "separatorOfThousands": "Booléen si true permet d'ajouter un séparateur de milliers (par défault false)",
         "isPercent": "Booléan si true permet d'afficher le symbole du pourcentage (par défault false)",
         "suffixClassName": "Paramètre qui permet d'afficher l'icone du symbole",
-        "suffixLabel": "Paramètre qui permet d'afficher le nom de la devise"
+        "suffixLabel": "Paramètre qui permet d'afficher le nom de la devise",
+        "centerAlign": "Mettre à 'true' pour centrer le text de l'input",
+        "alignSuffixWithText": "Activer pour aligner le suffix avec le text, par défaut désactivé"
       },
       "decimal-field": {
         "description": "Saisie d'un nombre à virgule avec possibilité de préciser :<br>1. L' autorisation ou pas des nombres négatifs (par défaut non autorisé)<br>2. Le nombre minimum et maximum de décimales souhaité après la virgule <br>3. Le séparateur souhaité par défaut ','<br>4. Si l'on souhaite afficher un préfix ou bien un suffix : par exemple cas de taux monétaire (non affiché par défaut)",
@@ -1076,7 +1111,18 @@
         "deleteNotification": "L'événement de la suppression d'une notification",
         "readNotification": "Cet événement est déclenché lorsque l'utilisateur marque une notification comme lue",
         "unreadNotification": "Cet événement est déclenché lorsque l'utilisateur marque une notification comme non lue",
-        "refresh": "L'événement qui actualise la liste des notifications"
+        "definition": "Paramètres lié à NotificationItem",
+        "refresh": "L'événement qui actualise la liste des notifications",
+        "ref": "Facultatif. c'est l'id de la notication",
+        "date": "C'est la date de publication de la notification",
+        "seen": "Un booléen pour dire que la notification est lue ou non lue.",
+        "category": "Facultatif. C'est la catégorie de la notification",
+        "hour": "C'est l'heure de publication de la notification",
+        "title": "Le titre de la notification",
+        "origin": "Facultatif. L'origine de la notification.",
+        "originIcon": "Facultatif. l'icone de l'origine",
+        "description": "Facultatif. La description de la notification",
+        "metaData": "Facultatif. c'est un attribut de type (clé,valeur) qui permet d'associer à chaque notification des informations supplémentaires."
       },
       "notification-modal": {
         "showDeleteAllButton": "Afficher le bouton de suppression de toutes les notifications.Par défaut 'true'."
@@ -1211,32 +1257,56 @@
         "allExpendable": "Parametre boolean permettant l'ouverture de plusieurs node avec des chemins différent "
       },
       "dialog": {
-        "description": "Ce composant permet d'afficher une boite de dialogue<br><br>Afin de l'implémenter, il faut importer BlDialogModule.<br>Des configurations génériques sont disponibles, entre autres celle de sauvegarde (openSaveDialog), de suppression (openDeleteDialog), de succès (openSuccessDialog), d'erreur (openErrorDialog), et de problème (openTechnicalErrorDialog).<br>Toutes les fonctions génériques <u>doivent</u> recevoir en paramètre un contenu textuel principal (title).<br>Les méthodes 'openSuccessDialog', 'openErrorDialog', 'openTechnicalErrorDialog' <u>peuvent</u> recevoir en paramètre un contenu textuel secondaire (text).<br>Toutes les fonctions génériques <u>peuvent</u> recevoir en paramètre jusqu'à quatre events correspondants aux différents boutons de la Dialog (yesEvent/noEvent/cancelEvent/closeEvent).<br><br>Quand le paramètre <b>waitDialogConfig</b> est renseigné, la Dialog est affichée avec un spinner et un message de chargement. Il faut appeler la méthode <b>closeDialog()</b> sur BlDialogService pour fermer la Dialog d'attente.<br><br><strong>La méthode openCustomDialog n'est pas recommandée.</strong> Elle peut être utilisée dans un cas métier ciblé.",
+        "description": "<p>Ce composant permet d'afficher une boite de dialogue Afin de l'implémenter, il faut importer BlDialogModule.<br>Des configuration sont disponible au niveau du service BlDialogService.</p><p>La configuration générique recommandée est la (openDialog) Néanmoin les configurations dépréciés sont toujous présente entre autres celle de sauvegarde (openSaveDialog), de suppression (openDeleteDialog), de succès (openSuccessDialog), d'erreur (openErrorDialog), et de problème (openTechnicalErrorDialog)./p>",
+        "declaration": "<p>La configuration générique (openDialog) accèpte en pramètre un objet de type <code>BlDialogConfig</code> et un param de type <code>DialogType</code>.</p><p>Pour les configuration dépréciés ils doivent recevoir en paramètre un contenu textuel principal (title) et un contenu textuel secondaire (text).<br>Ils peuvent recevoir en paramètre jusqu'à quatre events correspondants aux différents boutons de la Dialog (yesEvent/noEvent/cancelEvent/closeEvent).<br>Ils peuvent avoir jusqu'a trois boutons d'action configurés.<br><br>Quand le paramètre waitDialogConfig est renseigné, la Dialog est affichée avec un spinner et un message de chargement. Il faut appeler la méthode closeDialog() sur BlDialogService pour fermer la Dialog d'attente.</li><br>La méthode openCustomDialog n'est pas recommandée. Elle peut être utilisée dans un cas métier ciblé.</p>",
         "input": {
-          "data": "Obligatoire. C'est la donnée qui transit dans la Dialog.",
-          "title": "Obligatoire. C'est l'élément textuel pricipal de la Dialog.",
-          "text": "Facultatif. C'est l'élément textuel secondaire de la Dialog.",
-          "yesEvent": "Facultatif. EventEmitter du bouton 'yes'.",
-          "noEvent": "Facultatif. EventEmitter du bouton 'no'.",
-          "cancelEvent": "Facultatif. EventEmitter du bouton 'cancel'.",
-          "closeEvent": "Facultatif. EventEmitter du bouton 'close'.",
-          "getDialogCustomConfig": "Inputs accéssible uniquement via la méthode openCustomDialog (non recommandé)",
-          "iconClass": "Facultatif. C'est l'IconClassEnum de la Dialog.",
-          "iconColor": "Facultatif. C'est l'attribut qui gère la couleur de l'iconClass de la Dialog.",
-          "iconAddCircle": "Facultatif. C'est l'élément qui permet d'ajouter un cercle autour de l'iconClass de la Dialog.",
-          "yesButtonTxt": "Obligatoire. Le bouton 'yes' de la Dialog, Ce paramètre accepte comme entrée soit un string représentant le titre du bouton, soit un objet avec les propriétés 'titleButton' et 'icon'.",
-          "noButtonTxt": "Facultatif. le bouton 'no' de la Dialog, Ce paramètre accepte comme entrée soit un string représentant le titre du bouton, soit un objet avec les propriétés 'titleButton' et 'icon'.",
-          "cancelButtonTxt": "Facultatif. le bouton 'cancel' de la Dialog. Ce paramètre accepte comme entrée soit un string représentant le titre du bouton, soit un objet avec les propriétés 'titleButton' et 'icon'.",
-          "closeButtonTxt": "Obligatoire. le bouton 'close' de la Dialog. Ce paramètre accepte comme entrée soit un string représentant le titre du bouton, soit un objet avec les propriétés 'titleButton' et 'icon'.",
-          "testLabel": "Facultatif. C'est le testLabel de la Dialog. (par default à 'testLabel')",
-          "isButtonWithIcon": "Facultatif. Un boolean pour afficher des boutons avec des icones.",
-          "waitDialogConfig": "Facultatif. De type WaitDialogConfigModel, permet d'afficher une fenêtre d'attente, pour masquer la fenêtre d'attente après le traitement il faut appeler BlDialogService.closeDialog(). Les paramètres sont : title (titre le la fenêtre), message (texte de la fenêtre), timeoutBlockerMs (temps d'attente avant l'affichage de la fenêtre d'attente en ms), linkMessage (texte du lien), linkUrl (url du lien)"
+          "BlDialogConfig" : {
+            "definition": "Paramètres de la fonction générique (openDialog)",
+            "data": "Facultatif. C'est la donnée qui transit dans la Dialog.",
+            "title": "Facultatif. C'est l'élément textuel pricipal de la Dialog.",
+            "text": "Facultatif. C'est l'élément textuel secondaire de la Dialog.",
+            "yesEvent": "Facultatif. EventEmitter du bouton 'yes'.",
+            "noEvent": "Facultatif. EventEmitter du bouton 'no'.",
+            "cancelEvent": "Facultatif. EventEmitter du bouton 'cancel'.",
+            "closeEvent": "Facultatif. EventEmitter du bouton 'close'.",
+            "isButtonWithIcon": "Facultatif. Un boolean pour afficher des boutons avec des icones.",
+            "yesButton": "Facultatif. Le bouton 'yes' de la Dialog, Ce paramètre accepte comme entrée un objet avec les propriétés 'titleButton' et 'icon' , l'icone est facultatif.",
+            "noButton": "Facultatif. le bouton 'no' de la Dialog, Ce paramètre accepte comme entrée un objet avec les propriétés 'titleButton' et 'icon' , l'icone est facultatif.",
+            "cancelButton": "Facultatif. le bouton 'cancel' de la Dialog. Ce paramètre accepte comme entrée un objet avec les propriétés 'titleButton' et 'icon' , l'icone est facultatif.",
+            "waitDialogConfig": "Facultatif. De type WaitDialogConfigModel, permet d'afficher une fenêtre d'attente, pour masquer la fenêtre d'attente après le traitement il faut appeler BlDialogService.closeDialog(). Les paramètres sont : title (titre le la fenêtre), message (texte de la fenêtre), timeoutBlockerMs (temps d'attente avant l'affichage de la fenêtre d'attente en ms), linkMessage (texte du lien), linkUrl (url du lien)",
+            "testLabel": "Facultatif. C'est le testLabel de la Dialog. (par default à 'testLabel')"
+
+          },
+          "old-entries" : {
+            "definition": "Paramètres reliés au fontions de dialogues ( dépréciées ) :",
+            "data": "Obligatoire. C'est la donnée qui transit dans la Dialog.",
+            "title": "Obligatoire. C'est l'élément textuel pricipal de la Dialog.",
+            "text": "Facultatif. C'est l'élément textuel secondaire de la Dialog.",
+            "yesEvent": "Facultatif. EventEmitter du bouton 'yes'.",
+            "noEvent": "Facultatif. EventEmitter du bouton 'no'.",
+            "cancelEvent": "Facultatif. EventEmitter du bouton 'cancel'.",
+            "closeEvent": "Facultatif. EventEmitter du bouton 'close'.",
+            "getDialogCustomConfig": "Inputs accéssible uniquement via la méthode openCustomDialog (non recommandé)",
+            "iconClass": "Facultatif. C'est l'IconClassEnum de la Dialog.",
+            "iconColor": "Facultatif. C'est l'attribut qui gère la couleur de l'iconClass de la Dialog.",
+            "iconAddCircle": "Facultatif. C'est l'élément qui permet d'ajouter un cercle autour de l'iconClass de la Dialog.",
+            "yesButtonTxt": "Obligatoire. Le bouton 'yes' de la Dialog, Ce paramètre accepte comme entrée soit un string représentant le titre du bouton, soit un objet avec les propriétés 'titleButton' et 'icon'.",
+            "noButtonTxt": "Facultatif. le bouton 'no' de la Dialog, Ce paramètre accepte comme entrée soit un string représentant le titre du bouton, soit un objet avec les propriétés 'titleButton' et 'icon'.",
+            "cancelButtonTxt": "Facultatif. le bouton 'cancel' de la Dialog. Ce paramètre accepte comme entrée soit un string représentant le titre du bouton, soit un objet avec les propriétés 'titleButton' et 'icon'.",
+            "closeButtonTxt": "Obligatoire. le bouton 'close' de la Dialog. Ce paramètre accepte comme entrée soit un string représentant le titre du bouton, soit un objet avec les propriétés 'titleButton' et 'icon'.",
+            "testLabel": "Facultatif. C'est le testLabel de la Dialog. (par default à 'testLabel')",
+            "isButtonWithIcon": "Facultatif. Un boolean pour afficher des boutons avec des icones.",
+            "waitDialogConfig": "Facultatif. De type WaitDialogConfigModel, permet d'afficher une fenêtre d'attente, pour masquer la fenêtre d'attente après le traitement il faut appeler BlDialogService.closeDialog(). Les paramètres sont : title (titre le la fenêtre), message (texte de la fenêtre), timeoutBlockerMs (temps d'attente avant l'affichage de la fenêtre d'attente en ms), linkMessage (texte du lien), linkUrl (url du lien)"
+          }
         }
       },
       "generic-dialog": {
         "description": "<p>Affiche une boîte de dialogue générique avec un contenu personnalisé.</p><p>Afin d'utiliser ce composant, il faut importer BlDialogModule. La méthode 'openGenericDialog' de BlDialogService reçoit en paramètres la boîte de dialogue à afficher et un objet contenant les paramètres de la boîte de dialogue.</p>",
         "title2": "Créer une boîte de dialogue métier",
-        "desc2": "<p>Pour créer une boîte de dialogue métier, il faut insérer le contenu souhaité dans le composant bl-generic-dialog. Pour cela, il suffit d'ajouter l'attribut bl-generic-dialog__content dans la balise encapsulant notre contenu.</p> <p>Pour les traitements bloquants on peut demander via l'objet WaitDialogModel à ce qu'une dialogue d'attente s'affiche.<br> Une fois le traitement terminé, il faut appeler la méthode closeGenericDialog() du service BlDialogService pour fermer la boîte de dialogue.</p>",
+        "desc2": "<p>Pour créer une boîte de dialogue métier, il faut insérer le contenu souhaité dans le composant bl-generic-dialog. Pour cela, il suffit d'ajouter l'attribut bl-generic-dialog__content dans la balise encapsulant notre contenu.</p> <p>Pour les traitements bloquants on peut demander via l'objet <code>WaitDialogModel</code> à ce qu'une dialogue d'attente s'affiche.<br> Une fois le traitement terminé, il faut appeler la méthode <code>closeGenericDialog()</code> du service <code>BlDialogService</code> pour fermer la boîte de dialogue.</p>",
+        "sample2": "<p> La dialogue suivante retourne une valeur .</p>",
+        "sample3":"<p>Dans l'exemple suivant on a désactiver la clotûre par défaut du dialog par le paramètre : <code>disableCloseOnEvent</code></p></p><p>Pour réactiver les bouttons de la dialogue après finalisation de votre traitement il faut appeler la méthode <code>dislockClickButtons()</code> du service <code>BlGenericDialogService</code> .</p>",
+
         "input": {
           "openGenericDialogParams": "Paramètres de la méthode openGenericDialog du service BlDialogService",
           "blGenericDialogComponent": "Obligatoire. Le composant englobant le contenu à injecter dans la boîte de dialogue générique.",
@@ -1264,7 +1334,7 @@
       "attachment": {
         "input": {
           "bl-attachment": {
-            "accept": "Formats de fichiers acceptés. Par défaut 'null'",
+            "accept": "Formats de fichiers acceptés, exemple de valeur : '.doc,.docx,.pdf'. Par défaut 'null'",
             "required": "Fichier requis. Par défaut 'false'",
             "disabled": "Choix de fichier désactivé. Par défaut 'false'",
             "convertSizeFunc": "Fonction qui convertie la taille (octets) en chaine avec l'unité : (s: number) => string, si aucune fonction n'est définie, une convertion en Ko est réalisée.",
@@ -1285,7 +1355,7 @@
       },
       "multi-attachment": {
         "input": {
-          "accept": "Formats de fichiers acceptés. Par défaut 'null'",
+          "accept": "Formats de fichiers acceptés, exemple de valeur: \"['.pdf','.txt']\". Par défaut 'null'",
           "required": "Fichier(s) requis. Par défaut 'false'",
           "disabled": "Choix de fichiers désactivé. 'false' par défaut",
           "removable": "Fichiers supprimables.'true' par défaut",
@@ -1300,7 +1370,8 @@
           "width": "le width de composant est changeable, par défaut à 60% de son parent"
         },
         "output": {
-          "value": "La liste les fichiers séléctionnées de type FileInfo ou File ou null "
+          "value": "La liste les fichiers séléctionnées de type FileInfo ou File ou null ",
+          "deletedFile": "l'event du fichier supprimé."
         }
       },
       "time": {
@@ -1379,7 +1450,7 @@
         },
         "actions": {
           "input": {
-            "cardActions": "Liste des actions de type BlAction[] , optionnel. On peux implémenter son propre code si besoin.",
+            "cardActions": "Liste des actions de type BlAction[] , optionnel. On peut implémenter son propre code si besoin.",
             "class": "Class de style à appliquer sur la partie actions de carte."
           }
         },
@@ -1488,7 +1559,9 @@
           "displayAssignedTo": "Pour voir à qui la tâche est assignée",
           "withShadow": "Pour afficher l'ombre de la tâche",
           "coloredDomain": "Booleen, Tâche avec domaine coloré",
-          "isClickable": "Pour afficher le pointeur sous forme de main"
+          "isClickable": "Pour afficher le pointeur sous forme de main",
+          "isConfidential": "pour afficher l'icône du cadenas.",
+          "exclamationInfoToolTip": "Pour afficher l'icône de l'exclamation"
         },
         "output": {
           "plusButtonEvent": "Déclencher un event au click sur le bouton +",
@@ -1510,7 +1583,8 @@
       "content": {
         "input": {
           "title": "Titre de la table de contenu",
-          "idTopOfPage": " id du Haut de la page",
+          "idTopOfPage": " récupéré par la méthode querySelector ,Vous pouvez attribuer un identifiant (id) ou une classe à cet élément, ce qui permettra de positionner l'écran en haut de la page lors d'un clic ",
+          "topElement": "Dans le cadre d'une application micro-frontend, vous pouvez passer un ElementRef en tant que référence du haut de la page ou du composant. Cela permettra de déclencher un défilement vers le haut lors d'un clic. Assurez-vous que cet ElementRef pointe vers l'élément souhaité pour un positionnement précis de l'écran. ",
           "labelTopOfPage": "Le Titre du lien Haut de Page",
           "headerSelectors": "Selecteur des Headers (e.g :  .toc-markdown h3, .toc-markdown h4')",
           "containerScroll": "Définit l'élément défilable (par défaut 'window') "
@@ -1553,20 +1627,50 @@
     }
   },
   "sample": {
+    "table_and_panel": {
+      "75_percent": "Table avec Panel 75%",
+      "75_percent_description": "Cette page présente un exemple d'implémentation de la panel de droite avec la bl-table, la panel est mise à 75% par rapport à la largeur de la table"
+    },
+    "action_banner": {
+      "exemple1" : "Exemple par défaut :",
+      "exemple2" : "Exemple avec alignement espacé :"
+    },
+    "logout": {
+      "useServiceTitle": "Utilisation du service BLInterceptorLogoutService",
+      "useServieFirstParaph": "Pour activer le service, il est nécessaire d'initialiser le minuteur en spécifiant la durée de validité du jeton en secondes. Par la suite,\n  la section qui gère l'affichage du temps ou vous souhaitez déclencher la boîte de dialogue invitant l'utilisateur à s'authentifier ",
+      "useServiceSecondParaph": "Ainsi vous devez définir l'ensemble des textes , evenements pour vos boutons ",
+      "useServiceCodeExample": "this.timerService.initializeTimer(tokenDurationInSecond,messageDisplayedSeconds );",
+      "useServiceLastParaph": "Ainsi vous devez définir l'ensemble des textes , evenements pour vos boutons",
+      "simulationExampleTitle": "Simulation  d'ouverture de boite de dialogue de déconnexion",
+      "notice": "",
+      "interceptorTitle": "",
+      "interceptorParaph": ""
+    },
     "text-field": {
+      "exampleText": "Exemple du format de l'IBAN comporte :",
+      "exampleReadOnly": "Exemples en lecture seule :",
+      "exampleIbanFormat": "' FR**  **0* *a0* **** ** '",
       "ibanExample": "Utilisation du masque format IBAN",
+      "FR": "FR",
+      "0": "0",
+      "a": "a",
+      "*": "n'importe quel char",
+      "defaultDisplayMask": "Affiché par défaut",
+      "numberInput": "Input Chiffre",
+      "stringInput": "Input lettre",
       "phoneExample": "Masque dans un format Telephone  ",
       "iban": "IBAN",
       "mask": "Application ds Masque au niveau du composant",
       "title": "Types différents",
+      "suffixExample": "Exemple de  l'utilisation des  Suffix avec events",
       "onBlur-title": "Exemple avec l'implémentation de l'event (onBlurAction) :",
       "onBlur-desc": "Dans cet exemple le text du champ change de couleur une fois la méthode (blur) est déclenché.",
       "isPhone-desc": "Dans cet exemple le texte du champ change de formattage si le paramètre [isPhone] est true."
     },
     "task": {
       "showBusinessImplementation": "Afficher les déclinaisons métier",
-      "delayedTaskTitle": "Exemple de tache dépassée",
-      "TaskWithIncon": "Exemple de tache avec Icone",
+      "delayedTaskTitle": "Exemple de tâche avec échéance dépassée",
+      "TaskWithIncon": "Exemple de tâche avec icône",
       "notDelayedTaskTitle": "Exemple d'une prochaine tâche",
       "taskWithStatusTitle": "Exemple d'une tâche avec statut",
       "taskWithCustomDateMax": "Exemple d'une tâche avec écheance personnalisée",
@@ -1576,14 +1680,16 @@
       "plusButtonToolTipValue": "Ajouter une sous-tâche",
       "checkSquarButtonToolTipValue": "Terminer une tache ou sous-tâche en cliquant sur le bouton check-square",
       "UpdateButtonToolTipValue": "Modifier",
-      "TaskWithButtonCheckSquare": "Terminer une tache ou sous-tâche en cliquant sur le bouton check-square",
-      "TaskWithInitials": "Une tâche assignée",
-      "taskWidthColoredDomain": "Une tâche avec un domaine coloré",
-      "taskClickableEvent": "Une tâche avec une carte clicable"
+      "TaskWithButtonCheckSquare": "Exemple de tâche avec affichage de boutons au survol",
+      "TaskWithInitials": "Exemple de tâche assignée à un utilisateur",
+      "taskWidthColoredDomain": "Exemple de tâche avec un domaine coloré",
+      "taskClickableEvent": "Exemple de tâche cliquable"
     },
     "icon-picker": {
       "first-example": "Ce premier exemple nous démontre l'utilisation du composant en version globale. Tous les composants provenant de la bibliothèque bl-element et s'appuyant principalement sur phosphoIcons sont affichés, avec la possibilité de  rechercher.",
-      "second-example": "Le deuxième exemple démontre l'utilisation du bl-icon-picker en personnalisant les icônes à afficher."
+      "second-example": "Le deuxième exemple démontre l'utilisation du bl-icon-picker en personnalisant les icônes à afficher.",
+      "third-example": "Sélécteur d'icône en lecture seule :<br><p>Pour définir votre icone en lecture seule , et est nécessaire d'alimenter les deux entrées suivantes : <code>[formControl]=\"formControl\" [inputValue]=\"iconReadOnly\"</code></p>"
+
     },
     "color-picker": {
       "exemple1": "Sélecteur de couleur par roue chromatique : ",
@@ -1644,7 +1750,8 @@
         "start": "List de status",
         "end": "1/10"
       },
-      "moveCursorToStart": "Pour mettre le curseur au début du text choisit .Par défaud désdactivé."
+      "moveCursorToStart": "Pour mettre le curseur au début du text choisit .Par défaud désdactivé.",
+      "autoCompleteOnLength": "Le nombre de caractères à saisir avant affichage du résultat de la recherche"
     },
     "code": {
       "with": "Avec code",
@@ -1667,7 +1774,8 @@
       "price.placeholder": "Nombre positif à 2 décimales",
       "readOnly.placeholder": "Champs en lecture seul",
       "negativeValue.placeholder": "Champs peux être négative",
-      "addZeros.placeholder": "Auto complétion à 5 digits après virgule"
+      "addZeros.placeholder": "Auto complétion à 5 digits après virgule",
+      "centered-text-with-suffix": " Centrer le nombre et aligner le suffix :"
     },
     "integer": {
       "phoneNumber.placeholder": {
@@ -1749,6 +1857,7 @@
       "rollback": "Annuler",
       "delete": "Supprimer",
       "save": "Enregistrer",
+      "dont-save": "Ne pas enregistrer",
       "save-for-later": "Enregistrer et reprendre plus tard",
       "next": "Suivant",
       "previous": "Précédent",
@@ -1810,7 +1919,8 @@
       "ServiceAutocomplete": "Liste autocomplete avec appel de service",
       "aucun": "Aucun",
       "all": "Tous",
-      "multicomboGroupSearch": "Liste avec loupe et groupment à choix multiple "
+      "multicomboGroupSearch": "Liste avec loupe et groupment à choix multiple ",
+      "searchAfter-3-caractères": "Afficher le résultat de recherche après avoir saisit 3 caractères :"
     },
     "datepicker": {
       "label": "Date",
@@ -1826,7 +1936,8 @@
       "full": "année par défaut {{defaultYear}}, min {{ min }} | max {{ max }}",
       "nolimit": "année par défaut {{defaultYear}}",
       "min": "année min {{ min }}",
-      "max": "année max {{ max }}"
+      "max": "année max {{ max }}",
+      "custom-error-exemple": "L'erreur du format est costumisées dans cet exemple."
     },
     "datatable": {
       "titleTableWithClass": "Exemple de titre : Définissez la classe du titre grâce à l'attribut titleClass",
@@ -1847,6 +1958,7 @@
       "showSearchFilterDesription": "Permet de modifier la valeur de l'attribut showSearchFilter pour afficher ou cacher le champ de recherche",
       "setOrRemoveDefaultFilterDesription": "permet d'initialiser l'attribut initialFilter par une valeur initial ou la retirer",
       "compareObjectWarning": "La fonction de comparaison est obligatoire si vous ne loader pas la liste en entier au début si non la séléction peut ne pas fonctionner comme prévu",
+      "zeroLimitation": "Veuillez noter que l'affichage de la valeur zero '0' fonctionne seulement si la valeur est de type 'string'.",
       "table_RightSideFilter": "Tableau avec Filter à droite",
       "table_TopFilter": "Tableau avec Filter en haut",
       "markedFor": "Table avec Actions marquées pour",
@@ -1920,7 +2032,8 @@
         "vr": "VR",
         "city": "Ville",
         "code": "Code",
-        "label": "Label"
+        "label": "Label",
+        "statut" : "Statut"
       },
       "vr": {
         "popup.title": "Données VR",
@@ -1963,51 +2076,69 @@
         "technicalLink": "- TECHNICAL : Lien SVG technique"
       },
       "save": {
-        "description": "Dialog générique de sauvegarde (seul l'input 'titre' est paramétrable)",
+        "description": "Dialog de sauvegarde ",
         "button": "Ouvrir dialog de sauvegarde",
         "title": "Libellé obligatoire de sauvegarde : {{data}}",
         "text": "Description facultatif du dialogue de sauvegarde"
       },
       "delete": {
-        "description": "Dialog générique de suppression (seul l'input 'titre' est paramétrable)",
+        "description": "Dialog de suppression",
         "button": "Ouvrir dialog de suppression",
         "title": "Libellé obligatoire de suppression Libellé obligatoire de suppression Libellé obligatoire de suppression: {{data}}",
         "text": "Description facultatif du dialogue de suppression"
       },
       "success": {
-        "description": "Dialog générique de succès (seul les inputs 'titre' et 'text' sont paramétrables)",
+        "description": "Dialog de succès ",
         "button": "Ouvrir dialog de succès",
         "title": "Libellé obligatoire de succès : {{data}}",
         "text": "Libellé facultatif de succès Libellé facultatif de succès Libellé facultatif de succès({{data}})"
       },
       "error": {
-        "description": "Dialog générique d'erreur (seul les inputs 'titre' et 'text' sont paramétrables)",
+        "description": "Dialog d'erreur ",
         "button": "Ouvrir dialog d'erreur",
         "title": "Libellé obligatoire d'erreur : {{data}}",
         "text": "Libellé facultatif d'erreur ({{data}})<br/> <span class='red'>test</span>"
       },
       "technicalError": {
-        "description": "Dialog générique d'erreur technique (seul les inputs 'titre' et 'text' sont paramétrables)",
+        "description": "Dialog d'erreur technique ",
         "button": "Ouvrir dialog d'erreur technique",
         "title": "Libellé obligatoire d'erreur technique : {{data}}",
         "text": "Libellé facultatif d'erreur technique ({{data}})"
       },
-      "blocker": "Version bloquante",
+      "blocker":{
+        "title":"Fonction bloquante",
+        "button": "Ouvrir dialog de sauvegarde bloquant"
+      },
       "wait": {
         "title": "Numérotation en cours...",
         "text": "L'étape suivante s'ouvrira automatiquement à la fin du traitement."
       },
       "info": {
-        "description": "Dialog générique d'information (tout les entrées sont paramétrables)",
+        "description": "Dialog d'information ",
         "button": "Ouvrir dialog d'information"
+      },
+      "deprecated-function": "Fonctions dépréciés :",
+      "generic": {
+        "title": "Fonction générique recommandée :",
+        "code-used": "Code utilisé :",
+        "success": "Exemple de dialogue de succès:",
+        "delete": "Exemple de dialogue de suppression :",
+        "save": "Exemple de dialogue de sauvegarde :",
+        "info": "Exemple de dialogue d'info :",
+        "system-error": "Exemple de dialogue d'erreur technique :",
+        "error": "Exemple de dialogue d'erreur :"
       }
     },
     "generic-dialog": {
+      "sample1-title" : "Dialogue avec traitement bloquant :",
+      "sample2-title" : "Dialogue avec valeur de retour :",
+      "sample3-title" : "Dialogue avec validation :",
       "data": "Exemple de données en paramètre",
       "title": "Lancer un traitement long",
       "title2": "Formulaire de saisie",
       "buttonTitle": "Ouvrir Exemple 1 - Wait",
       "buttonTitle2": "Ouvrir Exemple 2 - Valeur de retour",
+      "buttonTitle3": "Ouvrir Exemple 3 - Traitement avant clotûre",
       "yesButtonTxt": "Oui",
       "noButtonTxt": "Non",
       "cancelButtonTxt": "Annuler",
@@ -2018,7 +2149,14 @@
       "label2": "Valeur",
       "placeholder": "Temps (ms)",
       "message": "Saisir la durée du traitement pour afficher la modale d'attente.",
-      "message2": "Saisir une valeur qui sera retournée par la dialog."
+      "message2": "Saisir une valeur qui sera retournée par la dialog.",
+      "hint2": "Entrez une valeur inférieur à 5 pour simuler une erreur de traitement",
+      "form-error": "Erreur du formulaire!",
+      "valid-form": "Formulaire valide",
+      "event-in-process": "Traitement lancé ...",
+      "duration": "duration",
+      "actions-activated": "Traitement finis - actions débloqués"
+
     },
     "snackbar": {
       "success": {
@@ -2050,7 +2188,8 @@
     "stepper": {
       "label_step1": "Label of the first step",
       "label_step2": "Label of the second step",
-      "label_step3": "Label of the third step"
+      "label_step3": "Label of the third step",
+      "step_changed": "Etape changée"
     },
     "stepper-form-template": {
       "example-title": "Formulaire en étapes",
@@ -2092,10 +2231,49 @@
   "param.customPaginator.lastPageLabel": "Dernière page",
   "param.customPaginator.nextPageLabel": "Page suivante",
   "param.customPaginator.previousPageLabel": "Page précédente",
-
   "form": {
     "error": {
       "required": "Champ obligatoire"
     }
+  },
+  "bl-table-doc": {
+    "title2": "Méthodes du composant bl-table",
+    "methods": "Méthodes",
+    "description": "Description",
+    "groups": {
+      "pagination": {
+        "name": "Pagination",
+        "paginatorAction": "Met à jour le « cacheDatatable » et les variables de pagination, lorsque l’utilisateur interagit avec le composant pagination.",
+        "getTotalLength": "Retourne le nombre de ligne des données du tableau.",
+        "getPageSizeOptions": "Retourne les options de choix de nombre de lignes à afficher dans la pagination.",
+        "getPageSize": "Retourne le nombre de ligne dans la page courante du tableau.",
+        "hidePaginator": "Retourne une valeur ‘boolean’ pour afficher ou cacher la pagination selon la configuration des droits du tableau "
+      },
+      "select": {
+        "name": "La sélection",
+        "selectAll": "Sélectionne toutes les lignes du tableau et déclenche l’événement définit en optionnel dans la config suivante -> blTableConfig.event.selectAll",
+        "removeFromSelection": ""
+      },
+      "data": {
+        "name": "Traitement sur les données de la table",
+        "refreshData": "Rafraichit la ligne d’entête et tous les lignes du tableau.",
+        "refreshRows": "Rafraîchit les ligne du tableau."
+      },
+      "filter-search": {
+        "name": "Filtres et recherche",
+        "getDataTableFilter": "Retourne l’objet contenant les filtres depuis le « cacheDataTable »",
+        "reset": "Réinitialise la recherche appliquée par les filtres ou par la recherche globale du tableau.",
+        "removeChip": "Retire un filtre directement depuis les chips et relance la recherche.",
+        "search": "Lance le traitement de la recherche dans le tableau.",
+        "applySearch": "Traitement utilisé dans la recherche *search()",
+        "initFilterValue": "Traitement utilisé dans la recherche *search()"
+      },
+      "other": {
+        "name": "Traitement sur les données de la table",
+        "initCompareObject": "",
+        "clickChip": "Provoque le lancement de l’événement définit dans la config : « chipEventClick » Lorsque l’utilisateur clique sur une chip ( en haut du tableau )"
+      }
+    }
+
   }
 }

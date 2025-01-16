@@ -1,18 +1,18 @@
 <form [formGroup]="formGroup">
   <p>{{'sample.decimal.percent'|translate}}</p>
-
   <bl-decimal-field #sample
-                         [allowNegative]="true"
-                         [formControl]="formGroup.controls.rate"
-                         [id]="'idDecimalPercentage'"
-                         [label]="'sample.decimal.rate'"
-                         [minDecimalDigits]="2"
-                         [maxDecimalDigits]="5"
-                         [isZeroAllowedAtTheBeginning]="true"
-                         [isPercent]="true"
-                         [testLabelValue]="'input1'"
+                    [allowNegative]="true"
+                    [formControl]="formGroup.controls.rate"
+                    [id]="'idDecimalPercentage'"
+                    [label]="'sample.decimal.rate'"
+                    [minDecimalDigits]="2"
+                    [maxDecimalDigits]="5"
+                    [isZeroAllowedAtTheBeginning]="true"
+                    [isPercent]="true"
+                    [testLabelValue]="'input1'"
   >
   </bl-decimal-field>
+
   <ul>
    <span [innerHTML]="'sample.decimal.percent-config'|translate"></span>
   </ul>
@@ -83,9 +83,23 @@
                          [testLabelValue]="'input5'"
   >
   </bl-decimal-field>
+  <p> {{'sample.decimal.centered-text-with-suffix'|translate}}</p>
+  <div [style]="{'width':'85px'}">
+    <bl-decimal-field #sample
+                      [allowNegative]="true"
+                      [formControl]="formGroup.controls.rate"
+                      [label]="'sample.decimal.price'"
+                      [id]="'idDecimalPercentage'"
+                      [centerAlign]="true"
+                      [isZeroAllowedAtTheBeginning]="true"
+                      [suffixLabel]="'%'"
+                      [alignSuffixWithText]="true"
+                      [testLabelValue]="'input1'"
+    >
+    </bl-decimal-field>
+  </div>
   <p>{{'sample.decimal.read-only'|translate}}</p>
    <bl-decimal-field #sample
-                        [allowNegative]="true"
                         [formControl]="formGroup.controls.amountReadOnly"
                         [id]="'idDecimalAmountReadOnly'"
                         [label]="'sample.libelle.read-only'"
@@ -93,7 +107,20 @@
                         [readOnly]="true"
                         [appearance]="'fill'"
                         [testLabelValue]="'input6'"
-
+                        [isPercent]="true"
  >
  </bl-decimal-field>
+
+  <bl-decimal-field #sample
+                    [formControl]="formGroup.controls.amountReadOnly"
+                    [id]="'idDecimalAmountReadOnly'"
+                    [label]="'sample.libelle.read-only'"
+                    [placeholder]="'sample.decimal.readOnly.placeholder'"
+                    [readOnly]="true"
+                    [appearance]="'fill'"
+                    [testLabelValue]="'input7'"
+                    [prefixIcon]="iconClassName"
+                    [rightAlign]="false"
+  >
+  </bl-decimal-field>
 </form>

@@ -1,0 +1,56 @@
+<form [formGroup]="formGroup">
+    <mat-form-field [attr.testlabel]="'formatList'" style="margin-right: 2rem">
+        <mat-select (selectionChange)="resetDatePicker()" [attr.testlabel]="'formatList' + '_select'" [formControl]="formGroup.controls.format">
+            <mat-option *ngFor="let format of formatList ; let index = index" [attr.testlabel]="'formatList' + '_option_' + index" [value]="format">
+                {{ format }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field [attr.testlabel]="'localeList'">
+        <mat-select (selectionChange)="resetDatePicker()" [attr.testlabel]="'localeList' + '_select'" [formControl]="formGroup.controls.locale">
+            <mat-option *ngFor="let locale of localeList ; let index = index" [attr.testlabel]="'localeList' + '_option_' + index" [value]="locale">
+                {{ locale }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+  <bl-datepicker [customErrorsMap]="customErrorMap"
+                 [dateFormat]="formGroup.controls.format.value"
+                 [dateLocale]="formGroup.controls.locale.value"
+                 [formControl]="formGroup.controls.date"
+                 [id]="'idDate'"
+                 [label]="'sample.datepicker.label'"
+                 [testLabelValue]="'datepicker1'"
+  >
+  </bl-datepicker>
+    <bl-datepicker [customErrorsMap]="customErrorMap"
+                   [dateFormat]="formGroup.controls.format.value"
+                   [dateLocale]="formGroup.controls.locale.value"
+                   [formControl]="formGroup.controls.dateWithRestriction"
+                   [id]="'idDate'"
+                   [label]="'sample.datepicker.label'"
+                   [maxDate]="maxDate"
+                   [minDate]="minDate"
+                   [testLabelValue]="'datepicker2'"
+                   >
+    </bl-datepicker>
+
+    <bl-datepicker [dateFormat]="formGroup.controls.format.value"
+                   [dateLocale]="formGroup.controls.locale.value"
+                   [formControl]="formGroup.controls.dateReadOnly"
+                   [id]="'idDateReadOnly'"
+                   [label]="'sample.libelle.read-only'"
+                   [readOnly]="true"
+                   [testLabelValue]="'datepicker3'"
+                   >
+    </bl-datepicker>
+
+<p> {{'sample.datepicker.exempleLunarDate'|translate}}</p>
+    <bl-lunar-date-picker [formControl]="formGroup.controls.lunarDate1" [id]="'lunar-field1'"
+                          [customErrorsMap]="lunarCustomErrorMap" [label]="'Entrez une date Lunaire'" [testLabelValue]="'lunarDate1'">
+
+    </bl-lunar-date-picker>
+    <bl-lunar-date-picker [formControl]="formGroup.controls.lunarDate2" [id]="'lunar-field2'" [label]="'Entrez une date Lunaire'" [readOnly]="true" [testLabelValue]="'lunarDate2'">
+
+    </bl-lunar-date-picker>
+</form>
+

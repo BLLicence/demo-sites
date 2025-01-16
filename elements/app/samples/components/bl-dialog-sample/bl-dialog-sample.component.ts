@@ -3,6 +3,10 @@ import {ToasterService} from '@bl/shared';
 import {BlDialogService, ConfirmDialogConfigModel, IconClassEnum, WaitDialogConfigModel} from '@esedit-md/shared-ui';
 import {TranslateService} from '@ngx-translate/core';
 import {timer} from 'rxjs';
+import {
+  BlDialogConfig, BlDialogConfigInt,
+  DialogType
+} from "../../../../../../../libs/shared-ui/src/lib/models/bl-dialog/bl-dialog-config.model";
 
 @Component({
     selector: 'bl-dialog-sample',
@@ -35,12 +39,197 @@ export class BlDialogSampleComponent {
             'sample.dialog.success.title',
             'sample.dialog.success.text',
             successEvent,
-            closeEvent,
+            closeEvent,undefined,
             'MyDialogSuccessTestLabel',
             this.isButtonWithIcon
         );
     }
 
+
+  /**
+   * Example of usage of the generic method blDialogService.openDialog()
+   * opens a Success dialog
+   */
+  openGenericSuccessDialog(){
+    const okEvent = new EventEmitter();
+    okEvent.subscribe((resp) =>
+      this.toasterService.success('okEvent '.concat(resp.data))
+    );
+    const noEvent = new EventEmitter();
+    noEvent.subscribe((resp) =>
+      this.toasterService.warning('noEvent '.concat(resp.data))
+    );
+    const closeEvent = new EventEmitter();
+    closeEvent.subscribe((resp) =>
+      this.toasterService.success('closeEvent '.concat(resp.data))
+    );
+
+    let successConfig : BlDialogConfig = {
+      data: {data:'Success'},
+      title:'sample.dialog.success.title',
+      text :'sample.dialog.success.text',
+      yesEvent:okEvent,
+      noEvent:noEvent,
+      cancelEvent:null,
+      closeEvent:closeEvent,
+      isButtonsWithIcon: true,
+      yesButton: {titleButton : 'sample.button.validate',icon:'check'},
+      noButton:{titleButton : 'sample.button.rollback',icon:'rollback'},
+      cancelButton:undefined,
+      waitDialogConfig:undefined,
+      testLabel:'MyGenericSuccessDialog'
+    };
+    this.blDialogService.openDialog(successConfig,DialogType.SUCCES);
+  }
+  /**
+   * Example of usage of the generic method blDialogService.openDialog()
+   * opens an Error of Technical Error dialog
+   */
+  openGenericErrorDialog(system_error:boolean) {
+    const okEvent = new EventEmitter();
+    okEvent.subscribe((resp) =>
+      this.toasterService.success('ok Event '.concat(resp.data))
+    );
+    const closeEvent = new EventEmitter();
+    closeEvent.subscribe((resp) =>
+      this.toasterService.success('closeEvent '.concat(resp.data))
+    );
+    let dialogData : any ;
+    let dialogType : any;
+    let dialogTitle : string;
+    let dialogText : string ;
+     if(system_error){
+       dialogData = {data:'Erreur System'};
+       dialogType = DialogType.SYSTEM_ERROR;
+       dialogTitle = 'sample.dialog.technicalError.title';
+       dialogText = 'sample.dialog.technicalError.text';
+     }else{
+       dialogData = {data:'Erreur'};
+       dialogType = DialogType.ERROR;
+       dialogTitle = 'sample.dialog.error.title';
+       dialogText = 'sample.dialog.error.text';
+     }
+
+    let errorConfig : BlDialogConfig = {
+      data: dialogData,
+      title:dialogTitle,
+      text :dialogText,
+      yesEvent:okEvent,
+      noEvent:null,
+      cancelEvent:null,
+      closeEvent:closeEvent,
+      isButtonsWithIcon: true,
+      yesButton: {titleButton : 'viewer.form.dialog.ok',icon:'check'},
+      noButton:undefined,
+      cancelButton:undefined,
+      waitDialogConfig:undefined,
+      testLabel:'MyGenericErrorDialog'
+    };
+    this.blDialogService.openDialog(errorConfig,dialogType);
+  }
+
+  openGenericDeleteDialog() {
+    const okEvent = new EventEmitter();
+    okEvent.subscribe((resp) =>
+      this.toasterService.success('okEvent '.concat(resp.data))
+    );
+    const noEvent = new EventEmitter();
+    noEvent.subscribe((resp) =>
+      this.toasterService.warning('noEvent '.concat(resp.data))
+    );
+    const closeEvent = new EventEmitter();
+    closeEvent.subscribe((resp) =>
+      this.toasterService.success('closeEvent '.concat(resp.data))
+    );
+
+    let deleteConfig : BlDialogConfig = {
+      data: {data:'Delete'},
+      title:'sample.dialog.delete.title',
+      text :'sample.dialog.delete.text',
+      yesEvent:okEvent,
+      noEvent:noEvent,
+      cancelEvent:null,
+      closeEvent:closeEvent,
+      isButtonsWithIcon: true,
+      yesButton: {titleButton : 'sample.button.validate',icon:'check'},
+      noButton:{titleButton : 'sample.button.rollback',icon:'rollback'},
+      cancelButton:undefined,
+      waitDialogConfig:undefined,
+      testLabel:'MyGenericDeleteDialog'
+    };
+    this.blDialogService.openDialog(deleteConfig,DialogType.DELETE);
+  }
+
+  openGenericSaveDialog() {
+    const okEvent = new EventEmitter();
+    okEvent.subscribe((resp) =>
+      this.toasterService.success('okEvent '.concat(resp.data))
+    );
+    const noEvent = new EventEmitter();
+    noEvent.subscribe((resp) =>
+      this.toasterService.warning('noEvent '.concat(resp.data))
+    );
+    const cancelEvent = new EventEmitter();
+    cancelEvent.subscribe((resp) =>
+      this.toasterService.success('cancelEvent '.concat(resp.data))
+    );
+    const closeEvent = new EventEmitter();
+    closeEvent.subscribe((resp) =>
+      this.toasterService.success('closeEvent '.concat(resp.data))
+    );
+
+    let saveConfig : BlDialogConfig = {
+      data: {data:'Save'},
+      title:'sample.dialog.save.title',
+      text :'sample.dialog.save.text',
+      yesEvent:okEvent,
+      noEvent:noEvent,
+      cancelEvent:cancelEvent,
+      closeEvent:closeEvent,
+      isButtonsWithIcon: false,
+      yesButton: {titleButton : 'sample.button.save'},
+      noButton:{titleButton : 'sample.button.dont-save'},
+      cancelButton:{titleButton : 'sample.button.rollback'},
+      waitDialogConfig:undefined,
+      testLabel:'MyGenericSaveDialog'
+    };
+    this.blDialogService.openDialog(saveConfig,DialogType.SAVE);
+
+  }
+
+  openGenericInfoDialog() {
+    const okEvent = new EventEmitter();
+    okEvent.subscribe((resp) =>
+      this.toasterService.success('Continuer la modification'.concat(resp.data))
+    );
+    const noEvent = new EventEmitter();
+    noEvent.subscribe((resp) => {
+        this.toasterService.warning('pages.basic.tableEditable2.dialog.unsave');
+      }
+    );
+    const closeEvent = new EventEmitter();
+    closeEvent.subscribe((resp) =>
+      this.toasterService.success('closeEvent '.concat(resp.data))
+    );
+
+    let infoConfig : BlDialogConfig = {
+      data: {data:'Info'},
+      title:'pages.basic.tableEditable2.dialog.form-uncompleted',
+      text :'pages.basic.tableEditable2.dialog.text',
+      yesEvent:okEvent,
+      noEvent:noEvent,
+      cancelEvent:null,
+      closeEvent:closeEvent,
+      isButtonsWithIcon: false,
+      yesButton: {titleButton : 'pages.basic.tableEditable2.dialog.rollback'},
+      noButton: {titleButton: 'pages.basic.tableEditable2.dialog.unsave'},
+      cancelButton:null,
+      waitDialogConfig:null,
+      testLabel:'MyGenericInfoDialog'
+    };
+    this.blDialogService.openDialog(infoConfig,DialogType.INFO);
+
+  }
     // Exemple d'utilisation : Message d'erreur Client
     openErrorDialog() {
         const errorEvent = new EventEmitter();
@@ -104,6 +293,7 @@ export class BlDialogSampleComponent {
         this.blDialogService.openSaveDialog(
             {data: 'Save'},
             'sample.dialog.save.title',
+            'sample.dialog.save.text',
             saveEvent,
             notSaveEvent,
             cancelEvent,
@@ -111,7 +301,6 @@ export class BlDialogSampleComponent {
             '',
             this.isButtonWithIcon,
             undefined,
-            'sample.dialog.save.text',
         );
     }
 
@@ -136,7 +325,15 @@ export class BlDialogSampleComponent {
         closeEvent.subscribe((resp) =>
             this.toasterService.success('closeEvent '.concat(resp.data))
         );
-        this.blDialogService.openSaveDialog({data: 'Save'}, 'sample.dialog.save.title', saveEvent, notSaveEvent, cancelEvent, closeEvent, '', this.isButtonWithIcon, new WaitDialogConfigModel('sample.dialog.wait.title', 'sample.dialog.wait.text', 1000), 'sample.dialog.save.text',);
+        this.blDialogService.openSaveDialog({data: 'Save'},
+          'sample.dialog.save.title',
+          'sample.dialog.save.text',
+          saveEvent,
+          notSaveEvent,
+          cancelEvent,
+          closeEvent, 'dialog-save', this.isButtonWithIcon,
+          undefined,undefined,undefined,
+          new WaitDialogConfigModel('sample.dialog.wait.title', 'sample.dialog.wait.text', 1000), );
     }
 
     // Exemple d'utilisation : Message de confirmation de suppression
@@ -156,13 +353,14 @@ export class BlDialogSampleComponent {
         this.blDialogService.openDeleteDialog(
             {data: 'Delete'},
             'sample.dialog.delete.title',
+            'sample.dialog.delete.text',
             deleteEvent,
             cancelEvent,
             closeEvent,
             '',
             this.isButtonWithIcon,
             undefined,
-            'sample.dialog.delete.text',
+
         );
     }
 

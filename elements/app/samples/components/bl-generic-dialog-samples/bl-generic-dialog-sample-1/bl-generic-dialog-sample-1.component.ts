@@ -39,7 +39,7 @@ export class BlGenericDialogSample1Component {
         this.ts.success(code + 'EventStarting');
         timer(duration)
             .subscribe(i => {
-                this.blDialogService.closeGenericDialog(code);
+                //this.blDialogService.closeGenericDialog(code);
                 this.ts.success(code + 'EventEnding');
             });
     }

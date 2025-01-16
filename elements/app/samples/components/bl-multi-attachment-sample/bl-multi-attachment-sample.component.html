@@ -10,7 +10,7 @@
         <code>[maxFileSize]="1024 * 1500"</code>
       </p>
       <p>{{'sample.multi-attachment.doc.maxSize' | translate}}
-        <code> [accept]="['pdf','txt','jpeg']"</code>
+        <code> [accept]="['.pdf','.txt','.jpg']"</code>
       </p>
       <p>{{'sample.multi-attachment.doc.sizeFunc' | translate}}
         <code> [convertSizeFunc]="sizeMo"</code>
@@ -27,7 +27,7 @@
     >
       <bl-multi-attachment
         (openFileFunc)="openFile($event)"
-        [accept]="['pdf','txt','jpeg']"
+        [accept]="['.pdf','.txt','.jpg']"
         [convertSizeFunc]="sizeMo"
         [formControl]="formGroup.controls.attachmentsList"
         [maxFileSize]="1024 * 1500"
@@ -36,6 +36,7 @@
         [required]="true"
         [testLabelValue]="'multi-attachment1'"
         class="bl-multi-attachment"
+        (deletedFile)="onDelete($event)"
       >
       </bl-multi-attachment>
     </form>
@@ -61,6 +62,7 @@
           [hideExtentions]="true"
           [removable]="true"
           [testLabelValue]="'multi-attachment1'"
+          (deletedFile)="onDelete($event)"
         >
         </bl-multi-attachment>
          <!-- CUSTOMIZED ERRORS -->
@@ -102,7 +104,7 @@
       class="align-items-center"
     >
       <bl-multi-attachment
-        [accept]="['pdf','txt','jpeg']"
+        [accept]="['.pdf','.txt','.jpg']"
         [convertSizeFunc]="sizeMo"
         [formControl]="formGroupReadOnly.controls.attachmentsList"
         [readOnlyFile]="true"

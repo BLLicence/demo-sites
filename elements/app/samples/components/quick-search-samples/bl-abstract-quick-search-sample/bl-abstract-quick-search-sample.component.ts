@@ -1,11 +1,11 @@
 import {Component, EventEmitter, OnInit, ViewChild} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
   BlBasicObject,
   BlCalloutObject,
   CalloutClassEnum,
   customActionSearch,
-  IconClassEnum
+  IconClassEnum, LinkInfo
 } from '@esedit-md/shared-ui';
 import {
   BlQuicksearchFooterButton
@@ -43,11 +43,14 @@ export class BlAbstractQuickSearchSampleComponent extends SampleAbstractComponen
 
   public ngOnInit(): void {
     this.modalTitle='Modal Title';
+    let externalLink : LinkInfo ={url :'https://getbootstrap.com/docs/4.1/utilities/flex/',text:'pages.variables.quick-search.external-link',tooltip:'pages.variables.quick-search.tooltip-link',inline:true};
+
     this.callOuts = [
       {
         calloutCLass:CalloutClassEnum.information,
-        text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a consequat dolor, quis aliquam nibh. Nullam massa velit, maximus malesuada nibh sit amet, suscipit tincidunt enim. ',
+        text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a consequat dolor, quis aliquam nibh. Nullam massa velit, maximus malesuada nibh sit amet, suscipit tincidunt enim. ",
         title:'Information',
+        externalLink: externalLink,
         enablePicto:true
       },
       {

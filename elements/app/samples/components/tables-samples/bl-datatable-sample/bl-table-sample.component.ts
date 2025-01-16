@@ -169,8 +169,8 @@ export class BlTableSampleComponent
         const result = this.staticBddService.getListUser(dataTableFilters);
         this.datasource.data = result.data;
         this.config.data.dataCount = result.dataCount;
-        this.isLoading = false;
         this.changeDetectorRef.detectChanges();
+        this.isLoading = false;
       }, 1000);
     } else {
       const result = this.staticBddService.getListUser(dataTableFilters);
@@ -234,7 +234,6 @@ export class BlTableSampleComponent
           }
         }
       });
-      //La selection unique et les cases à cocher ne peuvent pas fonctionner en même temps
       if (this.formGroup.controls.right.value.find((value) => value.id == 11)) {
         this.formGroup.controls.right.patchValue(
           this.formGroup.controls.right.value.filter((value) => value.id != 6)
@@ -269,21 +268,57 @@ export class BlTableSampleComponent
         false
       );
     }
-    if (this.config.columnAction && globalParam.right?.columnAction) {
-      let typeAction = 'menu';
-      if (
-        this.formGroup.controls.columnAction?.value !== null &&
-        this.formGroup.controls.columnAction.value.length <= 3
-      ) {
-        typeAction = 'icon';
-      }
+
+    const columnActions = this.formGroup.controls.columnAction.value || [];
+    if (globalParam.right?.groupActionList && this.config.columnAction &&
+      globalParam.right?.columnAction && columnActions.length > 3) {
+      const isColumnAction = true;
+      const groupedMenuAction: BlAction = {
+        idAction: '',
+        label: this.translateService.instant('sample.datatable.action.title_optionListAction'),
+        icon: { icon: 'vertical_dots', tooltip: 'More actions' }, // Vertical dots icon
+        isInMenu: true,
+        buttonActions: this.formGroup.controls.columnAction.value.map((action) => {
+          const actionBtn = getButtonInstance(action);
+          if (actionBtn) {
+            switch (action.id) {
+              case 1:
+                actionBtn.eventEmitter = this.eventDeactivate;
+                break;
+              case 2:
+                actionBtn.eventEmitter = this.eventExport;
+                break;
+              case 3:
+                if (actionBtn.confirmMessage) {
+                  actionBtn.confirmMessage.title = isColumnAction
+                    ? 'sample.datatable.action.delete.confirm.unique'
+                    : 'sample.datatable.action.delete.confirm.multi';
+                }
+                actionBtn.eventEmitter = this.eventDelete;
+                break;
+              case 4:
+                actionBtn.eventEmitter = this.eventControl;
+                break;
+              case 5:
+                actionBtn.eventEmitter = this.eventNotify;
+                break;
+            }
+            return actionBtn;
+          }
+          return null;
+        })
+      };
+      this.config.columnAction.list.push(groupedMenuAction);
+
+    } else {
       this.addAction(
         this.config.columnAction.list,
         this.formGroup.controls.columnAction,
-        typeAction === 'icon' ? 'icon' : 'menu',
+        'icon',
         true
       );
     }
+
     if (globalParam.right?.groupActionList) {
       this.addAction(
         this.config.groupedActionList,
@@ -292,6 +327,7 @@ export class BlTableSampleComponent
         false
       );
     }
+
     if (
       this.config.columnAction.list &&
       this.config.columnAction.list.length > 3
@@ -299,10 +335,7 @@ export class BlTableSampleComponent
       this.config.columnAction.display = 'menu';
     }
 
-    if (
-      !globalParam.right?.columnAction ||
-      this.config.columnAction.list.length === 0
-    ) {
+    if (!globalParam.right?.columnAction || this.config.columnAction.list.length === 0) {
       this.width_date += this.width_action;
     }
     this.initConfigColumn();
@@ -524,7 +557,6 @@ export class BlTableSampleComponent
             actionBtn.idAction === 'notify' ||
             actionBtn.idAction === 'deactivate')
         ) {
-          actionBtn.icon = undefined;
           if (actionBtn.idAction === 'control') {
             actionBtn.label = 'sample.datatable.action.control_all';
           }

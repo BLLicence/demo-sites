@@ -23,11 +23,11 @@ export const fullExampleTs = `export class AttachmentComponent {
   onFileChange(e) {
     console.log(e);
   }
-  
+
   /**
    * open the selected file in new window
    * @param obj : File | FileInfo | string | null
-   * @returns 
+   * @returns
    */
   openFile(obj: any): Window | null{
     let win: Window | null = null;
@@ -118,7 +118,7 @@ export const readonlyExampleTs = ` export class AttachmentComponent {
       readOnlyFile : FileInfo;
 
       constructor(private fb: UntypedFormBuilder) {
-        // initialize a readOnly file 
+        // initialize a readOnly file
         this.readOnlyFile = new FileInfo('test-file.pdf', 250 * 1024,new Date(),'');
       }
     }`

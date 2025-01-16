@@ -1,9 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ToasterService} from '@bl/shared';
-import {BlDialogService, BlGenericDialogComponent} from '@esedit-md/shared-ui';
+import {BlDialogService, BlGenericDialogComponent, BlGenericDialogService} from '@esedit-md/shared-ui';
 import {TranslateService} from '@ngx-translate/core';
-import {timer} from 'rxjs';
+import {delay, mergeMap, Observable, of, throwError, timer} from 'rxjs';
 
 @Component({
     selector: 'bl-generic-dialog-sample-2',
@@ -14,12 +14,15 @@ export class BlGenericDialogSample2Component {
     @ViewChild('dialog', {static: true}) dialog: BlGenericDialogComponent;
 
     message = this.translateService.instant('sample.generic-dialog.message2')
+    duration = this.translateService.instant('sample.generic-dialog.duration')
+
     formGroup = new FormGroup({
         label1: new FormControl({value: '', disabled: false}, Validators.required),
     });
 
     constructor(
         private blDialogService: BlDialogService,
+        private blGenDialogService : BlGenericDialogService,
         private ts: ToasterService,
         private translateService: TranslateService
     ) {
@@ -35,11 +38,11 @@ export class BlGenericDialogSample2Component {
     }
 
     event(code: string) {
-        const duration = Number(this.formGroup.controls['label1'].value);
-        timer(1)
-            .subscribe(i => {
-                this.blDialogService.closeGenericDialog('{duration: ' + duration + '}');
-            });
+      const duration = Number(this.formGroup.controls['label1'].value);
+      timer(1)
+        .subscribe(i => {
+          this.blDialogService.closeGenericDialog('{'+this.duration+': ' + duration + '}');
+        });
     }
 
 }

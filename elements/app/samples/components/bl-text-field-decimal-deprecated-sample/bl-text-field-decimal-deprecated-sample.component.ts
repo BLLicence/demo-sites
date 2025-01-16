@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SampleAbstractComponent } from '../../SampleAbstractComponent';
+import {IconClassEnum} from "@esedit-md/shared-ui";
 
 type BlDecimalFormGroup = {
   rate: number | null;
@@ -15,6 +16,7 @@ type BlDecimalFormGroup = {
   amountReadOnly: number | null;
   integerWithZero: number | null;
   integerWithoutZero: number | null;
+  customPercent : number | null;
   currency: string | null;
   price: number | null;
 };
@@ -52,6 +54,7 @@ export class BlTextFieldDecimalSampleComponent
       integerWithoutZero: new FormControl<number>(80, [
         this.checkValueValidator(),
       ]),
+      customPercent : new FormControl<number>(100),
       rate: new FormControl<number>(4.9),
       amountEuro: new FormControl<number>(10),
       amountReadOnly: new FormControl<number>(20),
@@ -101,4 +104,7 @@ export class BlTextFieldDecimalSampleComponent
         break;
     }
   }
+
+  protected readonly IconClassEnum = IconClassEnum;
+  suffixDollar= CurrencyEnum.DOLLAR;
 }

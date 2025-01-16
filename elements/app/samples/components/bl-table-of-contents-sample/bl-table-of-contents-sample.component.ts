@@ -10,6 +10,8 @@ import { Link, TableOfContentComponent } from '@esedit-md/shared-ui';
 export class BlTableContentSampleComponent implements OnInit {
   @ViewChild('toc', { static: true }) tableOfContents: TableOfContentComponent;
   @ViewChild('tocContainer', { static: true }) tocContainer: ElementRef;
+  @ViewChild('topRoot') topElementRef!: ElementRef; //you can define your ElementRef and pass it as Input (microFront case)
+
 
 
   ngOnInit(): void {

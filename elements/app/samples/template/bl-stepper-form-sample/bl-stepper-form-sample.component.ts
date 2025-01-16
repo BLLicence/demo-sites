@@ -48,7 +48,10 @@ export class BlStepperFormSampleComponent implements OnInit {
 
   pageTitle : string;
   // Stepper variables
-  public stepperActions : BlAction[] = [];
+  public stepperActions1 : BlAction[] = [];
+  public stepperActions2 : BlAction[] = [];
+  public stepperActions3 : BlAction[] = [];
+
   public titlesList : string[]= [];
 
   // Formulaires
@@ -73,12 +76,12 @@ export class BlStepperFormSampleComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private translate :TranslateService,
     private ts: ToasterService, private blDialogService: BlDialogService){
-      this.initStepperActions();
+
       this.pageTitle = this.translate.instant('sample.stepper-form-template.example-title');
 
   }
 
-  initStepperActions() {
+  initStepperActions1() {
     // Button save
     let save_label = this.translate.instant('sample.button.save-for-later');
     let emitEventSave = new EventEmitter<any>();
@@ -116,9 +119,104 @@ export class BlStepperFormSampleComponent implements OnInit {
     emintEventCustom.subscribe((event) => {
       // do somthing
     });
-    this.stepperActions.push(custom_button,custom_button,button_save);
+    // Action Next
+    let nextEvent = new EventEmitter<any>();
+    nextEvent.subscribe(()=>{
+      this.nextStep(this.formGroup1);
+    });
+    let next_step1: BlAction = {
+      idAction: '',
+      eventEmitter: nextEvent,
+      label: this._nextBtn,
+      idSelector: 'btn_next1',
+      icon: {
+        icon: this.iconNext
+      },
+      primary: true,
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      testLabelValue: 'form1_button_next_step'
+    };
+    this.stepperActions1.push(custom_button,custom_button,button_save,next_step1);
   }
+  initStepperActions2() {
+    // Button Back
+    let backEvent = new EventEmitter<any>();
+    backEvent.subscribe(()=>{
+      this.prevStep();
+    });
+    let previous_step2: BlAction = {
+      idAction: '',
+      eventEmitter: backEvent,
+      label: this._previousBtn,
+      idSelector: 'btn_previous2',
+      icon: {
+        icon: this.iconBack
+      },
+      primary: false,
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      testLabelValue: 'form2_button_next_step'
+    };
+    // Action Next
+    let nextEvent2 = new EventEmitter<any>();
+    nextEvent2.subscribe(()=>{
+      this.nextStep(null);
+    });
+    let next_step2: BlAction = {
+      idAction: '',
+      eventEmitter: nextEvent2,
+      label: this._nextBtn,
+      idSelector: 'btn_next2',
+      icon: {
+        icon: this.iconNext
+      },
+      primary: true,
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      testLabelValue: 'form2_button_next_step'
+    };
+    this.stepperActions2.push(previous_step2,next_step2);
 
+  }
+  initStepperActions3() {
+    // Button Back
+    let backEvent = new EventEmitter<any>();
+    backEvent.subscribe(()=>{
+      this.prevStep();
+    });
+    let previous_step3: BlAction = {
+      idAction: '',
+      eventEmitter: backEvent,
+      label: this._previousBtn,
+      idSelector: 'btn_previous3',
+      icon: {
+        icon: this.iconBack
+      },
+      primary: false,
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      testLabelValue: 'form3_button_next_step'
+    };
+    // Action EXit
+    let exit_label = this.translate.instant('sample.button.next');
+    let exitEvent = new EventEmitter<any>();
+    exitEvent.subscribe(()=>{
+      this.resetStepper();
+    });
+    let exit_step3: BlAction = {
+      idAction: '',
+      eventEmitter: exitEvent,
+      label: this._resetBtn,
+      idSelector: 'btn_exit',
+      primary: true,
+      buttonType: 'mat-stroked-button',
+      componentType: 'bl-button',
+      testLabelValue: 'form3_button_reset'
+    };
+    this.stepperActions3.push(previous_step3,exit_step3);
+
+  }
   ngOnInit(): void {
     // init labet boutons
     this._nextBtn = this.translate.instant('sample.button.next');
@@ -129,6 +227,9 @@ export class BlStepperFormSampleComponent implements OnInit {
     this.initForms();
     this.formGroups.push(this.formGroup1);
     this.initFormsTitles();
+    this.initStepperActions1();
+    this.initStepperActions2();
+    this.initStepperActions3();
 
     let labelStep1 = this.translate.instant('sample.stepper-form-template.step1');
     let labelStep2 = this.translate.instant('sample.stepper-form-template.step2');

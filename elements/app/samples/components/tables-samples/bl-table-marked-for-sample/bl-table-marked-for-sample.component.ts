@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -37,8 +37,6 @@ export class BlTableMarkedForSampleComponent {
   public tableComponent: BlTableComponent;
   public config: BlTableConfig;
   private datasource: MatTableDataSource<any>;
-  private actionControl = getButtonInstance(ACTION_CONTROL);
-  private actionDeactivate = getButtonInstance(ACTION_DEACTIVATE);
   private actionDeleteColumn = getButtonInstance(ACTION_DELETE);
   private actionNotifyColumn = getButtonInstance(ACTION_NOTIFY);
 
@@ -175,7 +173,7 @@ export class BlTableMarkedForSampleComponent {
         prenom: chance.first(),
         service: chance.address(),
         email: chance.email(),
-        etat: this.datasource.data.length % 5 === 0 ? true : false,
+        etat: this.datasource.data.length % 5 === 0,
         adresse: {
           country: chance.country(),
           city: chance.city(),
@@ -197,18 +195,11 @@ export class BlTableMarkedForSampleComponent {
    * Définition des buttons qui doit être afficher en haut du tableau
    */
   private getGroupedButtonActions() {
-    this.actionControl.icon = undefined;
-    this.actionControl.label = 'sample.datatable.action.control_all';
-    this.actionControl.eventEmitter = new EventEmitter();
-    this.actionControl.eventEmitter.subscribe(() => this.toasterService.success('sample.datatable.event.control'));
-    this.actionDeactivate.eventEmitter = new EventEmitter();
-    this.actionDeactivate.icon = undefined;
-    this.actionDeactivate.eventEmitter.subscribe(() => this.toasterService.success('sample.datatable.event.deactivate'));
-    // ADD OPEN FILTER BUTTON
+        // ADD OPEN FILTER BUTTON
     this.openRightPanelEventEmitter.subscribe(() => {
       this.openFilter();
     });
-    return [this.actionControl, this.actionDeactivate, this.openAction];
+    return [ this.openAction];
   }
   /**
    *
@@ -402,7 +393,7 @@ export class BlTableMarkedForSampleComponent {
   private getGlobalParamRight(): BlTableGlobalParamRight {
     return {
       groupActionButton: true, // action button at the top of header
-      expandableRows: true, // is the table having expandable rows
+      expandableRows: false, // is the table having expandable rows
       filter: false, // because no exist filter
       columnAction: false, // right to have action column
       selectOne: true, //- right to select one row

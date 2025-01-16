@@ -1,44 +1,30 @@
-import {
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    forwardRef,
-    Input,
-    OnInit,
-    TemplateRef,
-    ViewChild
-} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, forwardRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {MatTableDataSource} from '@angular/material/table';
 import {LayoutService} from '@bl/bl-app-layout';
 import {ToasterService} from '@bl/shared';
 import {
-    BlAction,
     BlAutoAbstractComponent,
-    BlBasicObject, BlComponentConfig,
+    BlBasicObject,
+    BlComponentConfig,
     BlDataTableFilters,
-    BlTableColumn, BlTableComponent, BlTableConfig,
-    BlTableSource, IconClassEnum
+    BlTableComponent,
+    BlTableConfig,
+    BlTableSource,
+    IconClassEnum
 } from '@esedit-md/shared-ui';
 import {TranslateService} from '@ngx-translate/core';
+import {
+    BlQuickSearchAbstractComponent
+} from '../../../../../../../../libs/shared-ui/src/lib/components/abstract/bl-quick-search-abstract/bl-quick-search-abstract.component';
 import {
     BlQuicksearchFooterButton
 } from '../../../../../../../../libs/shared-ui/src/lib/models/bl-quicksearch-footer.model';
 import {StaticBddService} from '../../../../services/static-bdd.service';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {
-    BlQuickSearchAbstractComponent
-} from "../../../../../../../../libs/shared-ui/src/lib/components/abstract/bl-quick-search-abstract/bl-quick-search-abstract.component";
-import {MatTableDataSource} from "@angular/material/table";
-import {
-    ACTION_CONTROL,
-    ACTION_DEACTIVATE,
-    ACTION_DELETE, ACTION_NOTIFY,
-    getButtonInstance
-} from '../../bl-text-field-sample/ButtonsEvent';
 import {
     BlSampleDialogVrComponent
 } from '../../tables-samples/bl-example-table-sample/bl-sample-dialog-vr/bl-sample-dialog-vr.component';
-import {BlQuickSearchStatutComponent} from './bl-quick-search-statut.component';
 
 @Component({
     selector: 'bl-quick-search-statut-2',
@@ -57,12 +43,11 @@ import {BlQuickSearchStatutComponent} from './bl-quick-search-statut.component';
                                   (autocompleteFunction)="autocomplete($event)"
                                   [customAction]="customAction"
                                   (actionEvent)="onClickCustomAction()"
-                                  [testLabelValue]="testLabelValue"
                                   [modalTitle]="modalTitle"
                                   [callOutBodyComponents]="callOutBodyComponents"
                                   [templateMode]="true"
                                   [customBody]="customBody"
-                                    [dialogCancelButton]="cancelButton"
+                                  [dialogCancelButton]="cancelButton"
         >
             <ng-template #customBody>
                 <bl-table #table [compareObject]="compareObject"
@@ -113,28 +98,27 @@ export class BlQuickSearchSecondStatutComponent extends BlQuickSearchAbstractCom
 
     public override config: BlTableConfig;
     public formGroup: FormGroup<{ id: FormControl<string | number | null>; nom: FormControl<number | string | null> }>;
-    public formGroup2: FormGroup<{ prenom: FormControl<string | number | null>; nom: FormControl<number | string | null> }>;
+    public formGroup2: FormGroup<{
+        prenom: FormControl<string | number | null>;
+        nom: FormControl<number | string | null>
+    }>;
     public compareObject: ((a: any, b: any) => boolean) | undefined | null;
     public customComparing = false;
     public showSearchField = true;
-    public cancelButton : BlQuicksearchFooterButton;
+    public cancelButton: BlQuicksearchFooterButton;
     filterComponentsConfig: BlComponentConfig[] = [];
-
+    @ViewChild(BlAutoAbstractComponent) autoAbstractComponent: BlAutoAbstractComponent;
+    @ViewChild(BlQuickSearchAbstractComponent, {static: false}) blQuickSearchAbstractComponent: BlQuickSearchAbstractComponent;
     private datasource2: MatTableDataSource<any>;
-
     private refreshEvent = new EventEmitter<BlDataTableFilters>();
     private eventVR = new EventEmitter<any>();
     private rowClickEvent = new EventEmitter<any>();
     private addEvent = new EventEmitter();
 
-    @ViewChild(BlAutoAbstractComponent) autoAbstractComponent: BlAutoAbstractComponent;
-    @ViewChild(BlQuickSearchAbstractComponent, {static: false}) blQuickSearchAbstractComponent: BlQuickSearchAbstractComponent;
-
-    ngOnInit() {}
     constructor(private toasterService: ToasterService,
                 public override translateService: TranslateService,
                 private staticBddService: StaticBddService,
-                public  override dialog: MatDialog,
+                public override dialog: MatDialog,
                 private changeDetectorRef: ChangeDetectorRef,
                 public layoutService: LayoutService) {
         super(translateService, dialog);
@@ -159,23 +143,26 @@ export class BlQuickSearchSecondStatutComponent extends BlQuickSearchAbstractCom
 
         this.initData(this.config, this.datasource2);
 
-      this.cancelButton =  {
-        butonName:'Fermer',
-        withIcon:true,
-        tooltip:'tooltip ',
-        iconClassName:IconClassEnum.cancel_circle
+        this.cancelButton = {
+            butonName: 'Fermer',
+            withIcon: true,
+            tooltip: 'tooltip ',
+            iconClassName: IconClassEnum.cancel_circle
 
-      }
+        }
+    }
+
+    ngOnInit() {
     }
 
     initConfigTable() {
         this.config = {
             globalParam: {
                 right: {
-                     expandableRows: true, // is the table having expandable rows
+                    expandableRows: true, // is the table having expandable rows
                     filter: true, // because no exist filter
                     columnAction: true, // right to have action column
-                     selectAll: true, //-- right to select all the row of the display page
+                    selectAll: true, //-- right to select all the row of the display page
                     search: true, //-- right to have rapid search
 
                 }
@@ -228,13 +215,12 @@ export class BlQuickSearchSecondStatutComponent extends BlQuickSearchAbstractCom
         };
     }
 
-
     configureRefreshEvent() {
-         this.rowClickEvent.subscribe((x) => {
+        this.rowClickEvent.subscribe((x) => {
             if (this.blQuickSearchAbstractComponent && this.blQuickSearchAbstractComponent.dialogRef) {
 
-                const value:BlBasicObject = {id: x.id, code: x.nom, label: x.nom};
-                 this.blQuickSearchAbstractComponent.dialogRef.close(value);
+                const value: BlBasicObject = {id: x.id, code: x.nom, label: x.nom};
+                this.blQuickSearchAbstractComponent.dialogRef.close(value);
             }
         });
         this.eventVR.subscribe(val => this.displayVR(val));
@@ -246,9 +232,11 @@ export class BlQuickSearchSecondStatutComponent extends BlQuickSearchAbstractCom
     public comparing(obj1: any, obj2: any): boolean {
         return obj1 && obj2 && obj1.id === obj2.id;
     }
+
     public autocomplete(a: string): void {
-          this.staticBddService.autocompleteStatut(a);
+        this.staticBddService.autocompleteStatut(a);
     }
+
     public changeComparing() {
         if (!this.customComparing) {
             this.compareObject = this.comparing;
@@ -263,7 +251,8 @@ export class BlQuickSearchSecondStatutComponent extends BlQuickSearchAbstractCom
         this.showSearchField = !this.showSearchField;
         this.changeDetectorRef.detectChanges();
     }
-     search(table: BlTableComponent) {
+
+    search(table: BlTableComponent) {
         const dataTableFilters = table.getDataTableFilter();
         if (!dataTableFilters.paginatorValues && this.config?.data?.pageSizeOption) {
             dataTableFilters.paginatorValues = {
@@ -281,6 +270,12 @@ export class BlQuickSearchSecondStatutComponent extends BlQuickSearchAbstractCom
             isExpanded: false
         }));
         table.cacheDatatable.dataTableFilters = dataTableFilters;
+    }
+
+    public resetSearch(): void {
+        this.formGroup2.controls.nom.reset();
+        this.formGroup2.controls.prenom.reset();
+
     }
 
     private initData(config: BlTableConfig, datasource: MatTableDataSource<BlTableSource>): void {
@@ -304,18 +299,12 @@ export class BlQuickSearchSecondStatutComponent extends BlQuickSearchAbstractCom
         }));
         this.changeDetectorRef.markForCheck();
     }
+
     private displayVR(value: any): void {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.width = '60%';
         dialogConfig.data = {val: value};
         this.dialog.open(BlSampleDialogVrComponent, dialogConfig);
-    }
-    public resetSearch(): void {
-        this.formGroup2.controls.nom.reset();
-        this.formGroup2.controls.prenom.reset();
-
-
-
     }
 }

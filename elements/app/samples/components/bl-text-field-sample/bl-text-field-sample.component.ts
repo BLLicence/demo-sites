@@ -1,10 +1,8 @@
-import { ColorChromeModule } from 'ngx-color/chrome';
-import { style } from '@angular/animations';
-
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators, } from '@angular/forms';
+import { AfterViewInit, Component, EventEmitter, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ToasterService } from '@bl/shared';
 import { SampleAbstractComponent } from '../../SampleAbstractComponent';
+import { BlSuffixIconColor, BlSuffixIconModel, BlSuffixRole, IconClassEnum } from '@esedit-md/shared-ui';
 
 type BlLibelleFormGroup = {
     label1: string | null;
@@ -18,7 +16,10 @@ type BlLibelleFormGroup = {
     label9: string | null;
     label10: string | null;
     label11: string | null;
-    label12: string | null
+    label12: string | null;
+    label13: string | null;
+    label14: string | null;
+
 };
 
 @Component({
@@ -31,23 +32,33 @@ export class BlTextFieldSampleComponent
     public customErrorMap = new Map<string, string>();
   phoneNumber: string;
   phoneMaskOptions = null;
+  ibanMaskOption= null;
+  customSuffixExample : BlSuffixIconModel  ;
+  customSuffixExample2 : BlSuffixIconModel  ;
+  simpleSuffixExample: BlSuffixIconModel;
+  icon_Arrow = IconClassEnum.arrow_up;
+  icon_Folder = IconClassEnum.folder_simple_star
+  clickEventCustom = new EventEmitter<any>();
   /*{
     mask: '+(33) 0 . 00 . 00 . 00 . 00 ',
     lazy: false
   };*/
-  ibanMaskOption = {
-    mask: 'FR00 0000 0000 0000 0000 0000 000',
-    lazy: false
+  clickEvent (){
+   this.toasterService.success("En cours")
   }
+  clickEvent2(){
+    this.toasterService.error("En cours")
+  }
+
     public constructor(public toasterService: ToasterService) {
         super();
     }
     public ngOnInit(): void {
         this.formGroup = new FormGroup({
-            label1: new FormControl<string | null>('Test', {
+            label1: new FormControl<string | null>('Test 1', {
                 validators: [this.maxLengthValidator()],
             }),
-            label2: new FormControl<string | null>('Test 2', Validators.required),
+            label2: new FormControl<string | null>('Test 2',{validators:[Validators.required]}),
             label3: new FormControl<string | null>('Test 3'),
             label4: new FormControl<string | null>('Test 4'),
             label5: new FormControl<string | null>('Test 5'),
@@ -57,23 +68,36 @@ export class BlTextFieldSampleComponent
             label9: new FormControl<string | null>('06.66.55.44.33', {//Test 9
                 validators: [this.phoneNumberValidator()],
             }),
-            label10: new FormControl<string | null>('Test 9'),
+            label10: new FormControl<string | null>('Test 9',{validators:[Validators.required]}),
           label11: new FormControl<string|null>(null),
-          label12: new FormControl<string|null>('')
+          label12: new FormControl<string|null>(''),
+          label13: new FormControl<string|null>(''),
+          label14: new FormControl<string|null>(''),
         });
         this.initErrorMap();
+
 
       setTimeout(() => {
         this.phoneMaskOptions = {
           mask: '+(33) 0 . 00 . 00 . 00 . 00 ',
           lazy: false
         };
-        this.ibanMaskOption = {
-          mask: 'FR00 0000 0000 0000 0000 0000 000',
-          lazy: false
-        }
-        this.formGroup.controls.label11.patchValue('123456789');
+        // here we do a combination of letters and numbers , use 'a' for letters 0 for numbers
+        this. ibanMaskOption = {
+          mask: 'FR**  **0* *a0* **** **',
+          lazy: false,
+          prepareChar:str=>str.toUpperCase()
+        };
+              this.formGroup.controls.label11.patchValue('123456789');
       }, 500);
+
+
+      this.customSuffixExample= {tooltip:'Exemple tooltip',role:BlSuffixRole.BUTTON,color:BlSuffixIconColor.SUCCESS,testLabelValue:"iconExample",clickEvent:new EventEmitter<any>()}
+      this.customSuffixExample.clickEvent?.subscribe(()=>{this.clickEvent()})
+      this.customSuffixExample2= {tooltip:'Exemple tooltip 2',role:BlSuffixRole.BUTTON,color:BlSuffixIconColor.ERROR,testLabelValue:"iconExample",clickEvent:new EventEmitter<any>()}
+      this.customSuffixExample2.clickEvent?.subscribe(()=>{this.clickEvent2()})
+      this.simpleSuffixExample= {tooltip:'Exemple tooltip',role:BlSuffixRole.DEFAULT,color:BlSuffixIconColor.DEFAULT,testLabelValue:"iconExample",clickEvent:new EventEmitter<any>()}
+
 
     }
 
@@ -103,8 +127,7 @@ export class BlTextFieldSampleComponent
         return (control: AbstractControl): ValidationErrors | null => {
             const value = control.value;
 
-            const isLengthValid = value.length <= 4;
-
+            const isLengthValid = (value==null) || value?.length <= 4;
             return isLengthValid ? null : { maxLengthExceeded: true };
         };
     }

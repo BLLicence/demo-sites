@@ -1,6 +1,5 @@
 <div>
   <div>
-   
     <h4>{{'sample.task.delayedTaskTitle' | translate}} </h4>
     <bl-task [actionsList]="myActionsList"
              [task]="delayedTask"
@@ -26,7 +25,7 @@
                  [displayPlusButton]="true"
                  [iconImagePath]="'assets/img/BL_logo.png'"
                  [iconImageStyle]="costumIconImageStyle"
-                 [coloredDomain]="true"
+                 [coloredDomain]="false"
                  [plusButtonToolTip]="'sample.task.plusButtonToolTipValue'"
                  [task]="notDelayedTask"
                  >
@@ -66,7 +65,8 @@
                  [iconImageStyle]="costumIconImageStyle"
                  [plusButtonToolTip]="'sample.task.plusButtonToolTipValue'"
                  [task]="notDelayedTask"
-                 [tromboneButton]="true">
+                 [tromboneButton]="true"
+                 [exclamationMarkInfo]="true">
         </bl-task>
         <h4>{{'sample.task.TaskWithInitials' | translate}}</h4>
         <bl-task
@@ -114,6 +114,7 @@
         <bl-task
                  [actionsList]="myActionsList"
                  [isClickable]="true"
+                 [isConfidential]="true"
                  (clickOnCardEvent)="emitClickCardEvents()"
                  [task]="notDelayedTask">
         </bl-task>

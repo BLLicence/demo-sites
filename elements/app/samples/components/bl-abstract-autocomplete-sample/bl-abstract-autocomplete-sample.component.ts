@@ -17,6 +17,7 @@ type BlAbstractAutoCompleteFormGroup = {
     status6: BlBasicObject | null,
     status7: BlBasicObject | null,
     status8: BlBasicObject | null,
+    status9 : BlBasicObject | null,
     listeSize: number
 }
 
@@ -52,6 +53,7 @@ export class BlAbstractAutocompleteSampleComponent extends SampleAbstractCompone
                 status6: new FormControl<BlBasicObject | null>(this.staticBddService.getStatus(6)),
                 status7: new FormControl<BlBasicObject | null>(this.staticBddService.getStatus(1)),
                 status8: new FormControl<BlBasicObject | null>(this.staticBddService.getStatus(90)),
+                status9: new FormControl<BlBasicObject | null>(null),
 
                 listeSize: new FormControl<number>(50)
             }

@@ -1,0 +1,25 @@
+<div class="container-fluid containerWidth">
+    <div class="row">
+        <div class="col-sm-6 ">
+            <div #tocContainer class="toc-markdown">
+                <h1 id="description" class="anchor border-bottom mb-2 bl-zt-h2">Description</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et tempor est. </p>
+                <h2 id="declaration" class="anchor border-bottom mb-2 bl-zt-h2">Déclarer un tableau</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et tempor est. </p>
+                <h2 id="internationalisation" class="anchor border-bottom mb-2 bl-zt-h2">Internationalisation</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et tempor est. </p>
+                <h2 id="parameters" class="anchor border-bottom mb-2 bl-zt-h2">Description des paramètres</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et tempor est. </p>
+                <h2 id="accessibility" class="anchor border-bottom mb-2 bl-zt-h2">Accessibilité</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et tempor est. </p>
+            </div>
+        </div>
+
+        <div class="col-sm-6 contentCol ">
+
+            <bl-table-of-contents class="toc-position" [containerLinks]="tocContainer" #toc [idTopOfPage]="'toppppp'"
+                [containerScroll]="'.bl-windows-page'" headerSelectors=".toc-markdown h1, .toc-markdown h2 "
+                [labelTopOfPage]="'pages.bl-table-of-contents.top' |translate" > </bl-table-of-contents>
+        </div>
+    </div>
+</div>

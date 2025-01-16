@@ -1,0 +1,92 @@
+<!--<bl-page-template [pageIcon]="pageIcon" [pageTitle]="'Modèle Tableau avec panneau latéral 75%'">
+  <div body >-->
+<bl-window-content-with-right-panel [over]="true"
+                                    [setFocus]="refSimpleRightPanel" [panelWidth]="'75%'" class="close-button-style mat-drawer-radius">
+  <bl-window-content-panel class="h-100">
+   <div class="p-3">
+    <!-- HEADER -->
+
+    <div class="header d-flex justify-content-between mb-2">
+      <!-- TITLE -->
+      <h1 class="mat-2 bl-zt-h1 title" >
+        <ng-container *ngIf="pageIcon">
+          <bl-icon [iconClassName]="pageIcon" [size]="1" [isTitle]="true"></bl-icon>
+        </ng-container>
+        {{ 'Modèle Tableau avec panneau latéral 75%' | translate}}
+      </h1>
+
+      <!-- BOUTON FERMER -->
+      <bl-button
+        [iconButton]="true" [iconClass]="IconClassEnum.cross"
+        (click)="onCloseBtn()" [testLabelValue]="'fermer_page'"
+        title="{{ 'bl-common.closePage' | translate }}"
+        id="'btnFermer'"></bl-button>
+    </div>
+
+    <bl-table
+      #table  [compareObject]="compareObject"
+      [config]="config" [filterComponentsConfig]="filterComponentsConfig"
+      [filterGroup]="formGroup"
+      [initialFilter]="defaultFilterValue"
+      [showSearchField]="showSearchField" [verticalLayout]="true"
+      [testLabelValue]="'table-example'"
+      id="bl-table-with-right-panel-75-percent-template-sample"
+      cdkScrollable>
+    </bl-table>
+   </div>
+  </bl-window-content-panel>
+  <bl-window-content-simple-right-panel #refSimpleRightPanel [title]="'Titre de panneau'" class="bl-window-parent" >
+    <bl-text-field
+      [formControl]="formGroup.controls.id"
+      [label]="'sample.datatable.header.matricule'"
+      [testLabelValue]="'matricule-text-field'"
+      id="filter_matricule2"
+    ></bl-text-field>
+    <bl-text-field
+      [formControl]="formGroup.controls.nom"
+      [label]="'sample.datatable.header.lastname'"
+      [testLabelValue]="'lastname-text-field'"
+      id="nom2"
+    ></bl-text-field>
+    <bl-text-field
+      [formControl]="formGroup.controls.prenom"
+      [label]="'sample.datatable.header.firstname'"
+      [testLabelValue]="'firstname-text-field'"
+      id="prenom2"
+    ></bl-text-field>
+    <bl-text-field
+      [formControl]="formGroup.controls.service"
+      [label]="'sample.datatable.header.department'"
+      [testLabelValue]="'service-text-field'"
+      id="service2"
+    ></bl-text-field>
+    <bl-text-field
+      [formControl]="formGroup.controls.email"
+      [label]="'sample.datatable.header.mail'"
+      [testLabelValue]="'email-text-field'"
+      id="email2"
+    ></bl-text-field>
+    <bl-window-right-panel-footer>
+      <bl-button mat-button mat-dialog-close
+                 title="{{ 'sample.button.save' | translate }}"
+                 (click)="doOnClickValidate()"
+                 [primary]="true"
+                 type="submit"
+                 [disabled]="formGroup.invalid"
+                 [testLabelValue]="'save_action'"
+                 style="margin-right: 10px;"
+      ></bl-button>
+      <bl-button mat-button mat-dialog-close
+                 title="{{ 'sample.button.rollback' | translate }}"
+                 (click)="doOnClickRollback()"
+                 [primary]="false"
+                 type="submit"
+                 [disabled]="formGroup.invalid"
+                 [testLabelValue]="'save_action'"
+                 style="margin-right: 10px;"
+      ></bl-button>
+    </bl-window-right-panel-footer>
+  </bl-window-content-simple-right-panel>
+</bl-window-content-with-right-panel>
+<!--</div>
+</bl-page-template>-->

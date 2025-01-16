@@ -1,0 +1,46 @@
+<h3>{{'sample.logout.useServiceTitle' | translate}}</h3>
+<p>{{'sample.logout.useServieFirstParaph' | translate}}</p>
+<p>{{'sample.logout.useServiceSecondParaph' | translate}}</p>
+  <div style="background: #f6f8fa">
+<code  class="language-javascript"><p>{{'sample.logout.useServiceSecondParaph' | translate}}</p></code>
+</div>
+<p>{{'sample.logout.useServiceLastParaph' | translate}}</p>
+<p>Important: Vous devez injecter le service au niveau du main Directory de votre projet</p>
+<h3>{{'sample.logout.simulationExampleTitle' | translate}}</h3>
+
+
+<div class="w-25">
+
+  <bl-label [labelState]="primaryState" [labelValue]="primaryValue" [testLabelValue]="'primary_sample'"
+            class="label-sample p-2"></bl-label>
+  <p style="font-weight: bold; margin-top: 4px ; color: rgba(0,0,0,0.69)">Validité du token:{{tokenValue}}(s)</p>
+  <mat-slider
+    class="example-margin"
+    [max]="100"
+    [min]="10"
+    [step]="1"
+    [discrete]="true">
+    <input matSliderThumb (click)="adaptDisplayDialogValue()" [(ngModel)]="tokenValue" #slider>
+  </mat-slider>
+  <p style="font-weight: bold; margin-top: 4px ; color: rgba(0,0,0,0.69)">Ouvrir la dialog a partir de : {{displayDialogTimeValue}}(s)</p>
+  <mat-slider
+    class="example-margin"
+    [max]="95"
+    [min]="5"
+    [step]="1"
+    [discrete]="true">
+    <input matSliderThumb #slider (click)="adaptDisplayTokenValue()" [(ngModel)]="displayDialogTimeValue">
+  </mat-slider>
+  <mat-slide-toggle class="mb-4" [(ngModel)]="isContentMaskEnabled"  color="primary" >Masquer le contenu</mat-slide-toggle>
+
+  <bl-button class="mt-4" [title]="buttonTitle" (click)="openLogOutDialog()" > </bl-button>
+
+
+</div>
+<h3 class="mt-1t">Intercepteur </h3>
+<p>Un intercepteur par défaut est mis afin de réinstaliser le timer    </p>
+<div style="background: #f6f8fa">
+<code class="language-javascript">
+  {{interceptorCode}}
+</code>
+</div>

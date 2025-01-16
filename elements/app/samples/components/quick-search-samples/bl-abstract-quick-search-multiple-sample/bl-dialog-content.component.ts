@@ -181,7 +181,7 @@ export class BlDialogContentComponent extends BlQuickSearchMultipleExampleCompon
 
       }
     ]
- console.log(this.data.informations)
+//  console.log(this.data.informations)
   }
 
   initConfigFirstTable() {

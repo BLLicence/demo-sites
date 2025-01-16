@@ -5,3 +5,15 @@
     border: #707070;
     margin-left: 10px;
 }
+.step-actions{
+  position : fixed;
+  bottom : 3em;
+  margin: 5px 5px 5px 0;
+}
+.action-right{
+  position:fixed;
+  right:3em;
+}
+.step-body{
+  height: 65vh;
+}

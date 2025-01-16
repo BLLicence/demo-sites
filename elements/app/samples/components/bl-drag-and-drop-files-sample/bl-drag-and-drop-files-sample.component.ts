@@ -1,20 +1,20 @@
-import {ChangeDetectorRef, Component, HostListener, OnInit, ViewChild} from '@angular/core';
-import {SampleFormGroup} from "../../SampleAbstractComponent";
+import { ChangeDetectorRef, Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { SampleFormGroup } from "../../SampleAbstractComponent";
 import {
   BlDragAndDropFilesComponent,
   BLFileProgress,
   FileOrFileInfo,
   MultiAttachmentValidators
 } from "@esedit-md/shared-ui";
-import {ToasterService} from "@bl/shared";
-import {FormControl, FormGroup, UntypedFormBuilder, Validators} from "@angular/forms";
+import { ToasterService } from "@bl/shared";
+import { FormControl, FormGroup, UntypedFormBuilder, Validators } from "@angular/forms";
 
 type BLFileFormGroupe = {
   attachmentsList: FileOrFileInfo[] | null,
 }
 
 export type ErrorStateFiles = {
-  file : FileOrFileInfo | any;
+  file: FileOrFileInfo | any;
   hasError: boolean;
 }
 
@@ -23,20 +23,21 @@ export type ErrorStateFiles = {
   templateUrl: './bl-drag-and-drop-files-sample.component.html',
   styleUrls: ['./bl-drag-and-drop-files-sample.component.scss'],
 })
-export class BlDragAndDropFilesSampleComponent implements OnInit{
+export class BlDragAndDropFilesSampleComponent implements OnInit {
 
- /* @HostListener('dnd1') dragAndDrop1 : BlDragAndDropFilesComponent;
-  @HostListener('dnd3') dragAndDrop3 : BlDragAndDropFilesComponent;
-  @HostListener('dnd2') dragAndDrop2 : BlDragAndDropFilesComponent;
-  @HostListener('dnd4') dragAndDrop4 : BlDragAndDropFilesComponent;*/
+  /* @HostListener('dnd1') dragAndDrop1 : BlDragAndDropFilesComponent;
+   @HostListener('dnd3') dragAndDrop3 : BlDragAndDropFilesComponent;
+   @HostListener('dnd2') dragAndDrop2 : BlDragAndDropFilesComponent;
+   @HostListener('dnd4') dragAndDrop4 : BlDragAndDropFilesComponent;*/
 
   // for change detection
   //@ViewChild('dnd4') dnd4 : BlDragAndDropFilesComponent;
 
-  public formGroup1 :  SampleFormGroup<BLFileFormGroupe>;
-  public formGroup2 :  SampleFormGroup<BLFileFormGroupe>;
-  public formGroup3 :  SampleFormGroup<BLFileFormGroupe>;
-  public formGroup4 :  SampleFormGroup<BLFileFormGroupe>;
+  public formGroup1: SampleFormGroup<BLFileFormGroupe>;
+  public formGroup2: SampleFormGroup<BLFileFormGroupe>;
+  public formGroup3: SampleFormGroup<BLFileFormGroupe>;
+  public formGroup4: SampleFormGroup<BLFileFormGroupe>;
+  public formGroup5: SampleFormGroup<BLFileFormGroupe>;
 
 
   constructor(private fb: UntypedFormBuilder, private cdr: ChangeDetectorRef, private toasterService: ToasterService,) {
@@ -52,9 +53,13 @@ export class BlDragAndDropFilesSampleComponent implements OnInit{
     this.formGroup3 = new FormGroup({
       attachmentsList: new FormControl<FileOrFileInfo[] | null>(null),
     });
+
     this.formGroup4 = this.fb.group({
       attachmentsList: [null, [
-          MultiAttachmentValidators.maxSize(1024 * 500)]]
+        MultiAttachmentValidators.maxSize(1024 * 500)]]
+    });
+    this.formGroup5 = new FormGroup({
+      attachmentsList: new FormControl<FileOrFileInfo[] | null>(null),
     });
   }
   /**
@@ -62,10 +67,10 @@ export class BlDragAndDropFilesSampleComponent implements OnInit{
    * @param obj : File | FileInfo | string | null
    * @returns
    */
-  openFile(obj: any){
+  openFile(obj: any) {
 
     let win: Window | null = null;
-    if(obj instanceof Blob){
+    if (obj instanceof Blob) {
 
       win = this.openBlob(obj);
     }
@@ -87,11 +92,11 @@ export class BlDragAndDropFilesSampleComponent implements OnInit{
   /**
    * open the file of type Blob on new window
    */
-  private openBlob(blob: Blob, win: any = null): Window | null{
+  private openBlob(blob: Blob, win: any = null): Window | null {
     const url = URL.createObjectURL(blob);
-    if(win){
+    if (win) {
       win.location = `${url}`;
-    }else {
+    } else {
       win = window.open(url, '_blank');
     }
     this.logIfWindowIsBlocked(win);
@@ -105,7 +110,7 @@ export class BlDragAndDropFilesSampleComponent implements OnInit{
    * upload when the file is valid
    */
   uploadFileSimulator(file: BLFileProgress) {
-    console.log("uploading file ",file);
+    console.log("uploading file ", file);
     // verify the errorState of the file
     setTimeout(() => {
 
@@ -121,10 +126,10 @@ export class BlDragAndDropFilesSampleComponent implements OnInit{
   }
 
   removeUploadedFile(file: FileOrFileInfo, formNumber: number) {
-    const formGroup = this['formGroup'+formNumber];
-    if(formGroup){
+    const formGroup = this['formGroup' + formNumber];
+    if (formGroup) {
       const attachmentsList = formGroup.get('attachmentsList')?.value;
-      if(attachmentsList) {
+      if (attachmentsList) {
         const updatedList = attachmentsList.filter((item: FileOrFileInfo) => item !== file);
         formGroup.get('attachmentsList').reset();//was here !
         formGroup.get('attachmentsList')?.setValue(updatedList);
@@ -136,7 +141,7 @@ export class BlDragAndDropFilesSampleComponent implements OnInit{
   }
 
   onSubmitFilesList(formGroup: SampleFormGroup<BLFileFormGroupe>) {
-    if(formGroup.valid){
+    if (formGroup.valid) {
       this.toasterService.success('Fichiers envoyés avec succès');
     }
     this.toasterService.error('Erreur du formulaire');

@@ -59,8 +59,8 @@
     <div class="row">
         <bl-list-box [addNullableOption]="true"
                      [data]="lst"
-                     [formControl]="formGroup.controls.listBox"
-                     [label]="'sample.list.listbox'" [placeholder]="'sample.list.aucun'" class="col-4"
+                     [readOnly]="true"
+                     [label]="'sample.list.listbox'" [placeholder]="'sample.status.list.none'|translate" class="col-4"
                      [testLabelValue] = "'listBox1'"
                      >
         </bl-list-box>

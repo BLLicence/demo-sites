@@ -1,0 +1,94 @@
+<form [formGroup]="formGroup" style="display: flex; gap:10%;">
+  <div class="w-25 flex-grow-0">
+    <p>{{'sample.code.with' | translate}}</p>
+    <bl-auto-statut-static [clearSearch]="false" [data]="lst"
+                           [displayCode]="true"
+                           [formControl]="formGroup.controls.status1"
+                           [hintEnd]="'sample.autocomplete.hint.end'"
+                           [hintStart]="'sample.autocomplete.hint.start'"
+                           [testLabelValue]="'autocompleteList_with_code'"
+                           id="statut1"
+    ></bl-auto-statut-static>
+    <p class="mt-2">{{'sample.code.without' | translate}}</p>
+    <bl-auto-statut-static [data]="lst" [displayCode]="false"
+                           [formControl]="formGroup.controls.status2"
+                           [moveCursorToStart]="true"
+                           [testLabelValue]="'autocompleteList_without_code'"
+                           id="statut2"
+    ></bl-auto-statut-static>
+      <p class="mt-2">{{'sample.code.without' | translate}} (clearSearch)</p>
+    <bl-auto-statut-static [clearSearch]="true" [data]="lst"
+                           [displayCode]="false"
+                           [formControl]="formGroup.controls.status2b"
+                           [testLabelValue]="'autocompleteList_without_code'"
+                           id="statut2b"
+    ></bl-auto-statut-static>
+    <p>{{'sample.libelle.read-only' | translate}}</p>
+    <bl-auto-statut-static [data]="lst" [displayCode]="false"
+                           [formControl]="formGroup.controls.status3"
+                           [readOnly]="true"
+                           [testLabelValue]="'autocompleteList_with_readOnly'"
+                           id="statut3"
+    ></bl-auto-statut-static>
+    <p>{{'sample.list.ServiceAutocomplete' | translate}}</p>
+    <bl-auto-statut-static (selectableListChangeEvent)="getData($event)" [clearSearch]="false"
+                           [data]="autocompleteList"
+                           [displayCode]="false"
+                           [formControl]="formGroup.controls.status4"
+                           [testLabelValue]="'autocompleteList_with_service_call'"
+                           id="statut4"
+    ></bl-auto-statut-static>
+    <p>{{'sample.autocomplete.simulation' | translate}}</p>
+    <bl-text-field-decimal
+      [allowNegative]="false"
+      [formControl]="formGroup.controls.listeSize"
+      [id]="'idListSize'"
+      [label]="'sample.autocomplete.listSize'"
+      [placeholder]="'sample.autocomplete.listSize'"
+      [testLabelValue]="'input4'"
+    ></bl-text-field-decimal>
+    <bl-auto-statut (selectableListChangeEvent)="getLargeData5($event)" [clearSearch]="true"
+                    [data]="autocompleteStatus5List"
+                    [displayCode]="false"
+                    [enablePagination]="true"
+                    [formControl]="formGroup.controls.status5"
+                    [label]="'sample.autocomplete.withPagination'"
+                    [testLabelValue]="'autocompleteList_with_service_call2'"
+                    id="statut5"
+    ></bl-auto-statut>
+
+    <bl-auto-statut (selectableListChangeEvent)="getLargeData6($event)" [clearSearch]="true"
+                    [data]="autocompleteStatus6List"
+                    [displayCode]="false"
+                    [formControl]="formGroup.controls.status6"
+                    [label]="'sample.autocomplete.withoutPagination'"
+                    [testLabelValue]="'autocompleteList_with_service_call'"
+    ></bl-auto-statut>
+
+    <p>{{'sample.autocomplete.withAction' | translate}}</p>
+    <bl-auto-statut-static (autoCompleteActionEvent)="onCustomActionClick(formGroup.controls.status7.value)" [autoCompleteAction]="addAction"
+                           [data]="lst"
+                           [displayCode]="false"
+                           [formControl]="formGroup.controls.status7"
+                           [testLabelValue]="'autocompleteList_with_custom_action'"
+                           id="statut7"
+    ></bl-auto-statut-static>
+  </div>
+  <div class="w-25 flex-grow-0">
+    <h4>{{'sample.autocomplete.customBehavior' | translate}}</h4>
+    <p class="mt-2">{{'sample.autocomplete.moveToStartAtivated' | translate}}</p>
+    <bl-auto-statut-static [data]="lst" [displayCode]="false"
+                           [formControl]="formGroup.controls.status8"
+                           [moveCursorToStart]="true"
+                           [testLabelValue]="'autocompleteList_cursor_start_activated'"
+                           id="statut8"
+    ></bl-auto-statut-static>
+    <p class="mt-2">{{'sample.autocomplete.enableSelect' | translate}}</p>
+    <bl-auto-statut-static [data]="lst" [displayCode]="false"
+                           [enableAutoSelect]="true"
+                           [formControl]="formGroup.controls.status4"
+                           [testLabelValue]="'autocompleteList_auto_select'"
+                           id="statut9"
+    ></bl-auto-statut-static>
+  </div>
+</form>

@@ -132,7 +132,7 @@ export class BlExampleTableSampleComponent {
                 width: '15%',
                 list: [this.actionDeleteColumn, this.actionNotifyColumn]
             },
-            groupedActionButton: this.getGroupedActionsFirstTable(),
+           // groupedActionButton: this.getGroupedActionsFirstTable(),
             data: {
                 column: [
                     {
@@ -210,7 +210,7 @@ export class BlExampleTableSampleComponent {
                 width: '15%',
                 list: this.getColumnAction2()
             },
-            groupedActionButton: this.getGroupedActionsSecondTable(),
+          //  groupedActionButton: this.getGroupedActionsSecondTable(),
             data: {
                 column: [
                     {
@@ -370,15 +370,8 @@ export class BlExampleTableSampleComponent {
      * Définition des buttons qui doit être afficher en haut du tableau
      */
     private getGroupedButtonActions() {
-        this.actionDeleteColumn.eventEmitter = new EventEmitter();
-        this.actionDeleteColumn.eventEmitter.subscribe((value) => {
-            this.staticBddService.deleteUser(value.id).subscribe(() => {
-                this.updateList(value, this.datasource, this.config, this.verticalTable);
-                this.toasterService.success('sample.datatable.event.delete.ok');
-            });
-        });
 
-        return [this.actionDeleteColumn, this.openAction];
+        return [this.openAction];
     }
 
     /**

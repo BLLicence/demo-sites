@@ -74,7 +74,7 @@ export class BlCustomErrorSampleComponent extends SampleAbstractComponent<Custom
   }
 
   private getDecimalError(formControl: FormControl| undefined) {
-   console.log("decimal error!")
+  // console.log("decimal error!")
     return (): ValidationErrors | null => {
       if (formControl && formControl.value) {
         const textValue: string | null = this.formGroup.controls.label3.value;

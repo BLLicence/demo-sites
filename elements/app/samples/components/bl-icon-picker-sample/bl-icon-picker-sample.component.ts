@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import { BlSharedService, IconClassEnum } from '@esedit-md/shared-ui';
+import {FormControl} from "@angular/forms";
 
 @Component(
     { selector:'bl-icon-picker-sample',
@@ -9,6 +10,8 @@ import { BlSharedService, IconClassEnum } from '@esedit-md/shared-ui';
 export class BlIconPickerSampleComponent{
 
     customIcons = new Map<string,string>;
+    iconReadOnly = 'ph-fill ph-currency-eur';
+    valueForm = new FormControl<any | null>(this.iconReadOnly);
     public isIConFilled: boolean;
 
     constructor( blSharedService: BlSharedService) {

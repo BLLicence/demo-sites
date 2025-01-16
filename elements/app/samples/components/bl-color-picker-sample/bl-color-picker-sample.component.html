@@ -30,7 +30,7 @@
             [formControl]="formGroup.controls.colorPicker3"
             [testLabelValue]="'color3'"
           ></bl-color-picker>
-  
+
           <li>
             <strong>{{ 'sample.color-picker.methode2' | translate }}</strong>
           </li>
@@ -58,5 +58,21 @@
         ></bl-color-circles>
       </div>
     </div>
+  <div class="col-4">
+    <h4>{{'bl-color-picker-read-only'|translate}}</h4>
+    <bl-color-picker
+      [color]="'#f45565'"
+      [formControl]="formGroup.controls.colorPicker1"
+      [testLabelValue]="'color1'"
+      [readOnly]="true"
+    ></bl-color-picker>
+
+   <!-- <bl-color-circles
+      [colors]="colors"
+      [formControl]="formGroup.controls.colorPicker5"
+      [testLabelValue]="'color5'"
+      [readOnly]="true"
+    ></bl-color-circles>-->
+  </div>
   </form>
-  
+

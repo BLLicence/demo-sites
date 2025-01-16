@@ -80,9 +80,25 @@
                          [testLabelValue]="'input5'"
   >
   </bl-text-field-decimal>
-
+  <p> {{'sample.decimal.centered-text-with-suffix'|translate}}</p>
+  <div [style]="{'width': '85px'}">
+    <bl-text-field-decimal
+      [allowNegative]="true"
+      [label]="'sample.decimal.price'"
+      [customErrorsMap]="customErrorMap"
+      [formControl]="formGroup.controls.customPercent"
+      [id]="'idIntegerWithZero'"
+      [nbDecimal]="0"
+      [placeholder]="'sample.integer.phoneNumber.placeholder.customExample'"
+      [isZeroAllowedAtTheBeginning]="true"
+      [testLabelValue]="'input1'"
+      [suffixLabel]="'%'"
+      [centerAlign]="true"
+      [alignSuffixWithText]="true"
+    >
+    </bl-text-field-decimal>
+  </div>
   <bl-text-field-decimal #sample
-                         [allowNegative]="true"
                          [formControl]="formGroup.controls.amountReadOnly"
                          [id]="'idMAmountReadOnly'"
                          [label]="'sample.libelle.read-only'"
@@ -91,6 +107,19 @@
                          [readOnly]="true"
                          [appearance]="'fill'"
                          [testLabelValue]="'input6'"
+                         [suffixLabel]="suffixDollar"
+  >
+  </bl-text-field-decimal>
+  <bl-text-field-decimal #sample
+                         [formControl]="formGroup.controls.amountReadOnly"
+                         [id]="'idMAmountReadOnly'"
+                         [label]="'sample.libelle.read-only'"
+                         [nbDecimal]="2"
+                         [placeholder]="'sample.decimal.rate.placeholder'"
+                         [readOnly]="true"
+                         [appearance]="'fill'"
+                         [testLabelValue]="'input7'"
+                         [isPercent]="true"
   >
   </bl-text-field-decimal>
 </form>

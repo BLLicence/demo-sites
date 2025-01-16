@@ -43,6 +43,7 @@
         </div>
         <div class="col-example">
             <h6>{{'sample.year-picker.nolimit' | translate: {defaultYear: '2009'} }}</h6>
+          <p>{{'sample.year-picker.custom-error-exemple'|translate}}</p>
             <bl-year-picker #openMe (blur)="getSelectedYear($event)"
                             (yearSelectedEvent)="getSelectedYear($event)"
                             [defaultYear]="'2009'"

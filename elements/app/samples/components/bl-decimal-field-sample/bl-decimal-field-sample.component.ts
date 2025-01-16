@@ -55,7 +55,7 @@ export class BlDecimalFieldSampleComponent
   }
   public ngOnInit(): void {
     this.formGroup = new FormGroup({
-      rate: new FormControl<number>(4.90),
+      rate: new FormControl<number>(4.91),
       amountEuro: new FormControl<number>(10.50),
       price:  new FormControl<number>(50),
       negativeValue : new FormControl<number>(-6.3),

@@ -90,5 +90,15 @@
                            [testLabelValue]="'autocompleteList_auto_select'"
                            id="statut9"
     ></bl-auto-statut-static>
+      <p>{{"sample.list.searchAfter-3-caractères" |translate}}</p>
+      <bl-autocomplete [formControl]="formGroup.controls.status9"
+                       [label]="'sample.list.autocomplete'"
+                       [data]="autocompleteList"
+                       [autoCompleteOnLength]="3"
+                       [placeholder]="'sample.list.all'"
+                       [testLabelValue] = "'autocomplete_after_3_carcaters'"
+      >
+      </bl-autocomplete>
   </div>
+
 </form>

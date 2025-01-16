@@ -1,4 +1,7 @@
 {
+  "bl-color-picker-icon-title" : "Sélectionner la couleur",
+  "bl-color-picker-icon-title-read-only" : "Couleur en lecture seule",
+  "bl-color-picker-read-only" : "Sélécteur de couleurs en lecture seule :",
  "bl-circle-color-picker.title": "Survolez les pastilles pour visualiser la variante couleur",
  "bl-common.filter.by": "Filtrer par",
  "sample.libelle.color": "Couleur",
@@ -8,6 +11,7 @@
   "bl-common.search": "Rechercher...",
   "bl-common.back": "Retour",
   "bl-icon-picker-choose-icon": "Sélectionner l'icône",
+  "bl-icon-picker-icon-readonly": "Icône en lecture seule",
   "bl-image-picker-snackbar-success": "Image modifiée",
   "bl-image-picker-snackbar-cancel": "Modification d'image annulée",
   "bl-common.reset": "Réinitialiser",
@@ -23,7 +27,6 @@
   "bl-common.tooltip.btn.choosefiles":"Choisir les fichiers",
   "bl-common.tooltip.btn.deletefile":"Supprimer le fichier",
   "bl-common.tooltip.btn.loadingfile":"En cours de chargement",
-
   "bl-common.qs.caracteres": "2 caractères requis",
   "bl-editableTable.addedLine": "Ligne ajoutée",
   "bl-editableTable.editedLine": "Ligne modifiée",
@@ -50,7 +53,7 @@
   "bl-table.status": "Statut",
   "bl-filter-other": "Autres filtres",
   "bl-year-picker.placeholder": "Saisir une année (YYYY)",
-  "bl-year-picker.error.bad.format": "Le format attendu: ex. {{format}}",
+  "bl-year-picker.error.bad.format": "Le format attendu est : {{format}}",
   "bl-year-picker.error.min": "Année minimum {{minYear}}",
   "bl-year-picker.error.max": "Année maximum {{maxYear}}",
   "bl-year-picker.error.filter": "Une erreur sur le filtre",
@@ -72,11 +75,14 @@
   "bl-multi-attachment.error.required": "Champs Pièce jointe multiple est requis",
   "bl-multi-attachment.error.not-accepted-extention": "L'extension requise est {{accept}}",
   "bl-drag-and-drop-files.label": "Glissez-déposez des fichiers pour les joindre",
+  "bl-drag-and-drop-files.hint.extention": "Extension(s) acceptée(s) : ",
+
   "bl-nav-card.empty.category": "Aucun lien à afficher",
   "bl-nav-card.link.info": "Cliquez pour voir plus d'informations",
   "bl-datePicker.closeButtonTxt": "Fermer le calendrier",
   "bl-checkbox.readonly": "Lecture seule",
   "bl-radio.readonly": "Lecture seule",
+  "bl-slide-toggle.readonly": "Lecture seule",
   "bl-text-field.currency": "€",
   "bl-notification.date.at": "à",
   "bl-notification.button.seen": "Marquer comme lu",
@@ -154,5 +160,8 @@
       "add-favorites": "Ajouter aux favoris"
 
     }
-  }
+  },
+  "quickSearch": {
+    "deepSearch": "Recherche approfondie",
+    "deleteSelection": "Supprimer la sélection"}
 }

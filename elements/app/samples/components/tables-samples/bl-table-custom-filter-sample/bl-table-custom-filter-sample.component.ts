@@ -1,20 +1,20 @@
-import {ChangeDetectorRef, Component, EventEmitter, HostBinding, ViewChild} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, HostBinding, ViewChild, ViewEncapsulation } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {MatTableDataSource} from '@angular/material/table';
 import {LayoutService} from '@bl/bl-app-layout';
 import {ToasterService} from '@bl/shared';
 import {
-    BlAction,
-    BlDataTableFilters,
-    BlTableColumn,
-    BlTableComponent,
-    BlTableConfig,
-    BlTableEvent,
-    BlTableGlobalParamRight,
-    BlTableSource,
-    BlTextFieldComponentType,
-    IconClassEnum
+  BlAction,
+  BlDataTableFilters, BlLabelState,
+  BlTableColumn,
+  BlTableComponent,
+  BlTableConfig,
+  BlTableEvent,
+  BlTableGlobalParamRight,
+  BlTableSource,
+  BlTextFieldComponentType,
+  IconClassEnum
 } from '@esedit-md/shared-ui';
 import {TranslateService} from '@ngx-translate/core';
 import {BlComponentConfig} from '../../../../../../../../libs/shared-ui/src/lib/models/bl-component-config';
@@ -32,6 +32,7 @@ import {BlSampleDialogVrComponent} from '../bl-example-table-sample/bl-sample-di
     selector: 'bl-table-custom-filter-sample',
     templateUrl: './bl-table-custom-filter-sample.component.html',
     styleUrls: ['./bl-table-custom-filter-sample.component.scss'],
+   encapsulation: ViewEncapsulation.None
 })
 export class BlTableCustomFilterSampleComponent {
     @HostBinding('style.flex-grow') flexGrow = '1';
@@ -42,7 +43,7 @@ export class BlTableCustomFilterSampleComponent {
     public formGroup: FormGroup<{ id: FormControl<string | number | null>; nom: FormControl<number | string | null> }>;
     filterComponentsConfig: BlComponentConfig[] = []
     public customComparing = false;
-    public compareObject: ((a: any, b: any) => boolean) | undefined | null;
+    public compareObject = (a: any, b: any) => {return a.id === b.id};
     public showSearchField = true;
     public defaultFilterValue: any;
     private datasource: MatTableDataSource<any>;
@@ -55,6 +56,7 @@ export class BlTableCustomFilterSampleComponent {
     private rowClickEvent = new EventEmitter<any>();
     private addEvent = new EventEmitter();
     private openRightPanelEventEmitter: EventEmitter<any> = new EventEmitter<any>();
+
     public openAction: BlAction = {
         idAction: 'rightPanelButton',
         idSelector: 'btn_grp_rightPanelButton',
@@ -143,7 +145,7 @@ export class BlTableCustomFilterSampleComponent {
                 labelSelected: this.translateService.instant('sample.datatable.header.selected'),
                 value: this.translateService.instant('sample.datatable.header.lastname'),
                 align: 'left',
-                width: '30%'
+                width: '20%'
             },
             {
                 name: 'prenom',
@@ -168,7 +170,13 @@ export class BlTableCustomFilterSampleComponent {
                 value: this.translateService.instant('sample.datatable.header.city'),
                 align: 'left',
                 width: '10%'
-            }
+            },
+          {
+            name: 'statut',
+            value: this.translateService.instant('sample.datatable.header.statut'),
+            align: 'left',
+            width: '10%'
+          }
         ];
     }
 
@@ -242,18 +250,11 @@ export class BlTableCustomFilterSampleComponent {
      * Définition des buttons qui doit être afficher en haut du tableau
      */
     private getGroupedButtonActions() {
-        this.actionControl.icon = undefined;
-        this.actionControl.label = 'sample.datatable.action.control_all';
-        this.actionControl.eventEmitter = new EventEmitter();
-        this.actionControl.eventEmitter.subscribe(() => this.toasterService.success('sample.datatable.event.control'));
-        this.actionDeactivate.eventEmitter = new EventEmitter();
-        this.actionDeactivate.icon = undefined;
-        this.actionDeactivate.eventEmitter.subscribe(() => this.toasterService.success('sample.datatable.event.deactivate'));
-// ADD OPEN FILTER BUTTON
+    // ADD OPEN FILTER BUTTON
         this.openRightPanelEventEmitter.subscribe(() => {
             this.openFilter();
         });
-        return [this.actionControl, this.actionDeactivate, this.openAction];
+        return [ this.openAction];
     }
 
     /**
@@ -355,7 +356,9 @@ export class BlTableCustomFilterSampleComponent {
                 pageSizeOption: [25, 50, 100, 500, 6000],
                 defaultSort: {active: 'id', direction: 'asc'}
             },
-            event: this.getTableEvents()
+
+          customContentAndStyle:{emptyStateClass:'myEmptyClass'},
+            event: this.getTableEvents(),
         };
     }
 
@@ -372,7 +375,7 @@ export class BlTableCustomFilterSampleComponent {
     private getGlobalParamRight(): BlTableGlobalParamRight {
         return {
             groupActionButton: true, // action button at the top of header
-            expandableRows: true, // is the table having expandable rows
+            expandableRows: false, // is the table having expandable rows
             filter: false, // because no exist filter
             columnAction: true, // right to have action column
             selectOne: true, //- right to select one row
@@ -490,4 +493,5 @@ export class BlTableCustomFilterSampleComponent {
         this.config.data.footerData = this.footerRow;
     }
 
+  protected readonly BlLabelState = BlLabelState;
 }

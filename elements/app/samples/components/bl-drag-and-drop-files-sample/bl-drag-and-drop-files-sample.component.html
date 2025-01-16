@@ -9,6 +9,8 @@
                             [maxFileSize]="1024 * 1500"
                             [required]="true"
                             [testLabelValue]="'dnd-files-1'"
+                          
+                            
     >
       <!-- List of chosen files and delete-->
       <bl-attachment-and-delete  *ngFor="let attachment of dnd1.files; let index=index"
@@ -20,6 +22,8 @@
                                  [testLabelValue]="'dnd1_file_'+index"
                                  (select)="openFile($event)"
                                  (removeUploadedFile)="removeUploadedFile(attachment,1)"
+                                 
+                                 
       >
       </bl-attachment-and-delete>
     </bl-drag-and-drop-files>
@@ -29,6 +33,8 @@
     </div>
   </form>
 </div>
+<!-- DRAG AND DROP TEST  -->
+
 
 <div class="mt-4">
   <h4>{{'pages.bl-drag-and-drop-files.autoUpdateExemple'|translate}}</h4>
@@ -90,6 +96,7 @@
                           [required]="true"
                           [testLabelValue]="'dnd-files-3'"
                           [customErrors]="true"
+                          [hint]="'pages.bl-drag-and-drop-files.hint'"
   >
     <!-- List of chosen files and delete-->
     <bl-attachment-and-delete  *ngFor="let attachment of dnd4.files; let index=index"
@@ -120,4 +127,39 @@
       ></bl-error>
     </div>
   </bl-drag-and-drop-files>
+</div>
+<!-- readonly dragNdrop -->
+<div class="mt-4">
+  <h4>{{'pages.bl-drag-and-drop-files.readonly'|translate}}</h4>
+  <form class="align-items-center">
+    <bl-drag-and-drop-files #dnd5
+                            [formControlList]="formGroup5"
+                            [formControl]="formGroup5.controls.attachmentsList"
+                            [acceptedExtensions]="['png','txt']"
+                            [maxFileSize]="1024 * 1500"
+                            [required]="true"
+                            [testLabelValue]="'dnd-files-5'"
+                            [readOnly]="true"
+                            
+    >
+      <!-- List of chosen files and delete-->
+      <bl-attachment-and-delete  *ngFor="let attachment of dnd5.files; let index=index"
+                                 [progress]="attachment.progress"
+                                 [value]="attachment.file"
+                                 [(filesList)]="dnd5.files"
+                                 [accept]="['png','txt']"
+                                 [removable]="true"
+                                 [testLabelValue]="'dnd5_file_'+index"
+                                 (select)="openFile($event)"
+                                 (removeUploadedFile)="removeUploadedFile(attachment,1)"
+                                 
+                                 
+      >
+      </bl-attachment-and-delete>
+    </bl-drag-and-drop-files>
+    <div class="validate-dnd-example">
+      <bl-button (click)="onSubmitFilesList(formGroup5)" type="submit"
+                 [title]="'pages.bl-drag-and-drop-files.submit'"></bl-button>
+    </div>
+  </form>
 </div>

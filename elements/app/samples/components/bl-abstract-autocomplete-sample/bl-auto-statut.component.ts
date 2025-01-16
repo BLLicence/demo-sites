@@ -47,9 +47,9 @@ export class BlAutoStatutComponent extends BlAutoAbstractComponent implements On
         this.id = 'autoStatut';
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.loadList();
-    }
+    };
 
     getData(data?: any) {
         if (this.selectableListChangeEvent.observed) {

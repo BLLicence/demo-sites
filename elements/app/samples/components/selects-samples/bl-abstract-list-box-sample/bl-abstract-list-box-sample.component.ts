@@ -53,8 +53,11 @@ export class BlAbstractListBoxSampleComponent
   private customValidator() {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const selectedValue= control.value;
-      console.log("value list :",selectedValue.code)
-      if (selectedValue && selectedValue.code != "ST_0") {
+      //only Status 1 is accepted - if nothing is selected --> required error
+      if(!selectedValue){
+        return {'required': true};
+      }
+      else if (selectedValue.code != "ST_0") {
         return null; // Validation passed
       } else {
         return {'customError': true}; // Validation failed

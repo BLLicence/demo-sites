@@ -26,6 +26,7 @@ import {StaticBddService} from '../../../services/static-bdd.service';
                 [hintValue]="hintValue"
                 [moveCursorToStart]="moveCursorToStart"
                 [enableAutoSelect]="enableAutoSelect"
+                [displayCross]="true"
         >
         </bl-auto-abstract>
     `,

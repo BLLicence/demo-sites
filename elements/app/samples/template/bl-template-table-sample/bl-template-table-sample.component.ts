@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
   EventEmitter,
@@ -33,19 +34,20 @@ import {
   ACTION_MODIFY,
   ACTION_TREE,
 } from '../../components/bl-text-field-sample/ButtonsEvent';
+import {config} from "rxjs";
 
 @Component({
   templateUrl: 'bl-template-table-sample.component.html',
 })
-export class BlTemplateTableSampleComponent {
+export class BlTemplateTableSampleComponent implements AfterViewInit{
   public customComparing = false;
   public showSearchField = true;
 
   public pageIcon: IconClassEnum = IconClassEnum.cancel_circle;
   public pageTitle = 'Titre de la page';
   private datasource: MatTableDataSource<any>;
-  @ViewChild('verticalTable', { static: false })
-  verticalTable: BlTableComponent;
+  @ViewChild('table', { static: false })
+  table: BlTableComponent;
 
   public formGroup: FormGroup<{
     id: FormControl<string | number | null>;
@@ -143,7 +145,7 @@ export class BlTemplateTableSampleComponent {
       globalParam: {
         right: {
           groupActionButton: true, // action button at the top of header
-          expandableRows: true, // is the table having expandable rows
+          expandableRows: false, // is the table having expandable rows
           filter: true, // because no exist filter
           columnAction: true, // right to have action column
           selectOne: true, //- right to select one row
@@ -237,7 +239,7 @@ export class BlTemplateTableSampleComponent {
     this.eventVR.subscribe((val) => this.displayVR(val));
 
     this.refreshEvent.subscribe((value: BlDataTableFilters) => {
-      this.updateList(value, this.datasource, this.config, this.verticalTable);
+      this.updateList(value, this.datasource, this.config, this.table);
     });
   }
 
@@ -328,5 +330,15 @@ export class BlTemplateTableSampleComponent {
     } else {
       this.defaultFilterValue = { id: '1' };
     }
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(()=>{
+      this.config.data.datasource.data.filter(row => {
+        row.selected = true;
+        this.table.setSelectedDataNumber(25);
+      });
+    },1000)
+
   }
 }

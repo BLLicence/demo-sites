@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   HostBinding,
   OnInit,
@@ -20,6 +21,8 @@ import {
   fullExampleTemplate2,
   fullExample2Ts,
 } from './attach.constantes';
+import {ToasterService} from "@bl/shared";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'bl-attachment-sample',
@@ -55,9 +58,9 @@ export class BlAttachmentSampleComponent implements OnInit {
     size :2,
     color: 'var(--bs-red)',
     testLabel: 'icon-home'
- 
+
    }
-  constructor(private fb: UntypedFormBuilder) {
+  constructor(private fb: UntypedFormBuilder, private toasterService: ToasterService, private translate:TranslateService,private cd :ChangeDetectorRef) {
     // initialize a readOnly file
     this.readOnlyFile = new FileInfo(
       'test-file.pdf',
@@ -97,14 +100,14 @@ export class BlAttachmentSampleComponent implements OnInit {
       { name: 'HTML', code: this.fullExampleTemplate }
     );
 
+    this.simulateDelay();
   }
 
   sizeMo(s: number): string {
     return `(${Math.round((s / 1024 / 1024 + Number.EPSILON) * 100) / 100} Mo)`;
   }
 
-  onFileChange(e: any) {
-
+  onFileChange(event: any) {
   }
 
   /**
@@ -154,5 +157,25 @@ export class BlAttachmentSampleComponent implements OnInit {
   }
   collapseAll(){
     this.expand = false;
+  }
+
+  onDeleteFile(value) {
+    let msg = this.translate.instant('pages.attachment.msg-file-deleted');
+    this.toasterService.success(msg.concat(String(' '+value)));
+  }
+
+  changeFile() {
+  }
+
+  private simulateDelay() {
+
+    setTimeout(()=>{
+      this.form.controls['fileCtrl'].setValue(new FileInfo(
+        'test-file.pdf',
+        250 * 1024,
+        new Date(),
+        ''
+      ));
+    },2000)
   }
 }
